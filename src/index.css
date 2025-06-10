@@ -1,0 +1,27 @@
+:root {
+  font-family: "Ubuntu", sans-serif;
+  background-color: #F5F4FF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+}
