@@ -32,3 +32,8 @@ input {
   font-family: inherit;
   outline: none;
 }
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}

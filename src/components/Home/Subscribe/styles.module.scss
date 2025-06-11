@@ -1,0 +1,24 @@
+@use "@/styles/variables" as *;
+
+.subscribe {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  &__link {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 147%;
+    color: $orange;
+  }
+
+  &__title {
+    line-height: 120%;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+  }
+}
