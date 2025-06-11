@@ -1,0 +1,28 @@
+import styles from './styles.module.scss';
+import { CustomButton } from '@components/UI/CustomButton';
+import { BANK_CARDS } from '@components/Home/Greetings/constants';
+
+export const Greetings = () => {
+  return (
+    <section className={styles.greetings}>
+      <div className={styles.greetings__left}>
+        <h1 className={styles.greetings__title}>
+          Choose the design you like and apply for card right now
+        </h1>
+
+        <CustomButton>Choose the card</CustomButton>
+      </div>
+
+      <div className={styles.greetings__right}>
+        {BANK_CARDS.map((card) => (
+          <img
+            className={styles.greetings__card}
+            key={card.src}
+            src={card.src}
+            alt={card.alt}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
