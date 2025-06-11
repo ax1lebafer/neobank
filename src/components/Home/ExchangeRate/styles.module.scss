@@ -1,0 +1,10 @@
+.exchange {
+  margin-top: 48px;
+
+  &__card {
+    border-radius: 30px;
+    background: linear-gradient(to top, #B2B2B2 0%, #F4F4F4E5 100%);
+    height: 350px;
+    box-shadow: 0 2px 4px 0 #BBBBBB33;
+  }
+}
