@@ -30,6 +30,17 @@ export const Footer = () => {
             </ul>
           </nav>
         </section>
+
+        <span className={styles.footer__divider}></span>
+
+        <section className={styles.footer__info}>
+          <p>
+            We use cookies to personalize our services and improve the user
+            experience of our website. Cookies are small files containing
+            information about previous visits to a website. If you do not want
+            to use cookies, please change your browser settings
+          </p>
+        </section>
       </div>
     </footer>
   );
