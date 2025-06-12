@@ -1,7 +1,11 @@
+@use "@/styles/variables" as *;
+
 .greetings {
   margin-top: 132px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
 
   &__left {
     max-width: 610px;
@@ -13,20 +17,27 @@
 
   &__title {
     font-size: 48px;
+
+    @media (max-width: $desktop) {
+      font-size: 36px;
+    }
   }
 
   &__right {
     max-width: 518px;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 16px;
-    grid-row-gap: 16px;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    gap: 16px;
   }
 
   &__card {
     border-radius: 15px;
     user-select: none;
     -webkit-user-drag: none;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
