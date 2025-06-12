@@ -1,0 +1,24 @@
+@use "@/styles/variables" as *;
+
+.button {
+  font-size: 16px;
+  background-color: $blue-light;
+  display: flex;
+  gap: 10px;
+  max-width: 160px;
+  color: $white;
+  font-weight: 700;
+  align-items: center;
+  border-radius: 20px;
+  padding: 8px 25px;
+  transition: background-color .3s;
+
+  &:hover {
+    background-color: $blue-dark;
+  }
+
+  &__icon {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
