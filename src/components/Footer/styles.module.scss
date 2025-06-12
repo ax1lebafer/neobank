@@ -12,6 +12,14 @@
     max-width: 1440px;
     padding: 0 70px;
     margin: 0 auto;
+
+    @media (max-width: $tablet) {
+      padding: 0 30px;
+    }
+
+    @media (max-width: $phone) {
+      padding: 0 15px;
+    }
   }
 
   &__top {

@@ -7,6 +7,11 @@
   align-items: center;
   gap: 30px;
 
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
   &__image {
     max-width: 510px;
     max-height: 415px;
@@ -15,6 +20,10 @@
 
     @media (max-width: $desktop) {
       max-width: 400px;
+    }
+
+    @media (max-width: $tablet) {
+      max-width: 330px;
     }
   }
 
@@ -30,6 +39,7 @@
 
     @media (max-width: $desktop) {
       font-size: 28px;
+      text-align: center;
     }
   }
 
