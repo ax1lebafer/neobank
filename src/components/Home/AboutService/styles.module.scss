@@ -1,3 +1,5 @@
+@use "@/styles/variables" as *;
+
 .services {
   margin-top: 48px;
   display: flex;
@@ -9,6 +11,10 @@
     font-size: 30px;
     font-weight: 500;
     line-height: 50px;
+
+    @media (max-width: $tablet) {
+      font-size: 28px;
+    }
   }
 
   &__subtitle {
