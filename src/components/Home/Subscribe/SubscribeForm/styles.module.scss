@@ -9,6 +9,17 @@
   padding: 22px 32px;
   box-shadow: 0 10px 20px 0 #363A781A;
 
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__inputWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
   &__icon {
     user-select: none;
     -webkit-user-drag: none;
