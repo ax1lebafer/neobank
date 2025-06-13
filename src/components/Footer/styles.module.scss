@@ -42,6 +42,10 @@
       font-size: 30px;
       font-weight: 700;
       line-height: 1.5;
+
+      @media (max-width: $tablet) {
+        font-size: 28px;
+      }
     }
 
     > a:nth-child(2) {

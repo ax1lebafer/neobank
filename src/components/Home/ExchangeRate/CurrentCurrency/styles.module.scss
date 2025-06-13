@@ -9,6 +9,12 @@
   grid-row-gap: 32px;
   list-style: none;
 
+  @media (max-width: $phone) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  }
+
   &__item {
     display: flex;
     line-height: 22px;

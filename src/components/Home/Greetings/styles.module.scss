@@ -32,6 +32,10 @@
       font-size: 36px;
       text-align: center;
     }
+
+    @media (max-width: $tablet) {
+      font-size: 32px;
+    }
   }
 
   &__right {
