@@ -44,6 +44,10 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(160px, 1fr));
     gap: 16px;
+
+    @media (max-width: $phone) {
+      grid-template-columns: repeat(1, minmax(160px, 1fr));
+    }
   }
 
   &__card {
