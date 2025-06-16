@@ -3,6 +3,13 @@
   background-color: #F5F4FF;
 }
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,4 +31,9 @@ button {
 input {
   font-family: inherit;
   outline: none;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
 }

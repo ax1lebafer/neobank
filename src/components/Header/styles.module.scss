@@ -1,0 +1,75 @@
+@use "@/styles/variables" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  position: relative;
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: $purple;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    transition: transform 0.3s ease;
+    
+    @media (max-width: $tablet) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 200px;
+      flex-direction: column;
+      background-color: $white;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      z-index: 2;
+    }
+  }
+
+  &__navOpen {
+    @media (max-width: $tablet) {
+      transform: translateX(0);
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__buttonbox {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+
+    @media (max-width: $tablet) {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: $purple;
+      border-radius: 2px;
+    }
+  }
+}
