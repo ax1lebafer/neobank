@@ -5,10 +5,13 @@ import {
   useSelector,
   useStore,
 } from 'react-redux';
+import exchangeReducer from '@/store/reducers/ExchangeRate';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: combineReducers({}),
+    reducer: combineReducers({
+      exchangeRate: exchangeReducer,
+    }),
   });
 };
 
