@@ -1,4 +1,5 @@
 import styles from './styles.module.scss';
+import { NewsSlider } from '@components/Home/News/NewsSlider';
 
 export const News = () => {
   return (
@@ -10,6 +11,8 @@ export const News = () => {
         We update the news feed every 15 minutes. You can learn more by clicking
         on the news you are interested in.
       </p>
+
+      <NewsSlider />
     </section>
   );
 };
