@@ -7,6 +7,7 @@ import BankImage from '@/assets/images/bank.svg';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { getExchangeRateAsync } from '@/store/actions/ExchangeRate';
 import { useCallback, useEffect, useState } from 'react';
+import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 
 export const ExchangeRate = () => {
   const dispatch = useAppDispatch();
@@ -62,32 +63,45 @@ export const ExchangeRate = () => {
     setCurrencies(filtered);
   }, [conversion_rates]);
 
-  if (loading) {
-    return <p>Загрузка</p>;
-  }
-
   return (
     <section className={styles.exchange}>
       <article className={styles.exchange__card}>
         <div className={styles.exchange__left}>
           <h2 className={styles.exchange__title}>
-            Exchange rate in internet bank
+            <SkeletonBlock loading={loading}>
+              Exchange rate in internet bank
+            </SkeletonBlock>
           </h2>
-          <p className={styles.exchange__subtitle}>Currency</p>
+          <p className={styles.exchange__subtitle}>
+            <SkeletonBlock loading={loading}>Currency</SkeletonBlock>
+          </p>
 
           <CurrentCurrency currencies={currencies} />
 
           <Link className={styles.exchange__link} to={ROUTES.home}>
-            All courses
+            <SkeletonBlock loading={loading} skeletonProps={{ width: 100 }}>
+              All courses
+            </SkeletonBlock>
           </Link>
         </div>
 
         <div className={styles.exchange__right}>
           <p className={styles.exchange__date}>
-            Update every 15 minutes, MSC {lastUpdated}
+            <SkeletonBlock loading={loading} skeletonProps={{ width: 200 }}>
+              Update every 15 minutes, MSC {lastUpdated}
+            </SkeletonBlock>
           </p>
 
-          <img className={styles.exchange__image} src={BankImage} alt="Bank" />
+          <SkeletonBlock
+            loading={loading}
+            skeletonProps={{ className: styles.exchange__image, width: 120 }}
+          >
+            <img
+              className={styles.exchange__image}
+              src={BankImage}
+              alt="Bank"
+            />
+          </SkeletonBlock>
         </div>
       </article>
     </section>
