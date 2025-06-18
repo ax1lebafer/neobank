@@ -3,6 +3,7 @@ import { Features } from '@components/Home/Features';
 import { ExchangeRate } from '@components/Home/ExchangeRate';
 import { AboutService } from '@components/Home/AboutService';
 import { Subscribe } from '@components/Home/Subscribe';
+import { News } from '@components/Home/News';
 
 export const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ export const HomePage = () => {
       <Features />
       <ExchangeRate />
       <AboutService />
+      <News />
       <Subscribe />
     </>
   );
