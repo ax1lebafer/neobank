@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IResponseNewsDTO } from '@/types/newsTypes';
-import { fetchNews } from '@/services/newsApi';
+import { fetchNews, IFetchNewsParams } from '@/services/newsApi';
 
 export const getNewsAsync = createAsyncThunk<
   IResponseNewsDTO,

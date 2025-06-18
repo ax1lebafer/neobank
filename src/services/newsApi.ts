@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IResponseNewsDTO } from '@/types/newsTypes';
 
-interface IFetchNewsParams {
+export interface IFetchNewsParams {
   category?:
     | 'business'
     | 'entertainment'
@@ -35,8 +35,6 @@ export const fetchNews = async ({
       },
     }
   );
-
-  console.log(response);
 
   if (response.data.status !== 'ok') {
     throw new Error(response.data.message);

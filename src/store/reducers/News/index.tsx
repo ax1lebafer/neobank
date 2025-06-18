@@ -13,10 +13,22 @@ const newsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getNewsAsync.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
+    builder
+      .addCase(getNewsAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.news = null;
+      })
+      .addCase(getNewsAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.news = action.payload;
+      })
+      .addCase(getNewsAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? action.error.message ?? 'Unknown error';
+        state.news = null;
+      });
   },
 });
 
