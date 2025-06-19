@@ -8,8 +8,11 @@ export const NewsCard: FC<INewsCardProps> = ({
   url,
   description,
 }) => {
+  const handleOpenNews = () => {
+    window.open(url);
+  };
   return (
-    <article className={styles.newsCard}>
+    <article className={styles.newsCard} onClick={handleOpenNews}>
       <img src={src} alt="News" className={styles.newsCard__image} />
       <h4>{title}</h4>
       <p>{description}</p>

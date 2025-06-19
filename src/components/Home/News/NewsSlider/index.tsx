@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 import { NewsCard } from '@components/Home/News/NewsSlider/NewsCard';
 import { IconButton } from '@components/UI/IconButton';
 import { ArrowIcon } from '@assets/iconComponents/ArrowIcon';
+import Skeleton from 'react-loading-skeleton';
+import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 
 export const NewsSlider = () => {
   const dispatch = useAppDispatch();
-  const { news } = useAppSelector((state) => state.news);
+  const { news, loading } = useAppSelector((state) => state.news);
 
   const { articles: newsResponse } = news || {};
 
@@ -42,6 +44,11 @@ export const NewsSlider = () => {
     sliderRef.current?.scrollBy({ left: STEP, behavior: 'smooth' });
   };
 
+  const renderSkeletons = () =>
+    Array.from({ length: 4 }, (_, i) => (
+      <Skeleton key={i} width={320} height={400} borderRadius={25} />
+    ));
+
   useEffect(() => {
     dispatch(getNewsAsync({}));
   }, [dispatch]);
@@ -53,38 +60,50 @@ export const NewsSlider = () => {
         ref={sliderRef}
         onScroll={updateButtons}
       >
-        {newsResponse
-          ?.filter(
-            (
-              item
-            ): item is typeof item & {
-              urlToImage: string;
-              description: string;
-            } => item.urlToImage !== null && item.description !== null
-          )
-          .map((news) => (
-            <NewsCard
-              key={news.url}
-              src={news.urlToImage}
-              title={news.title}
-              description={news.description}
-              url={news.url}
-            />
-          ))}
+        {loading
+          ? renderSkeletons()
+          : newsResponse
+              ?.filter(
+                (
+                  item
+                ): item is typeof item & {
+                  urlToImage: string;
+                  description: string;
+                } => item.urlToImage !== null && item.description !== null
+              )
+              .map((news) => (
+                <NewsCard
+                  key={news.url}
+                  src={news.urlToImage}
+                  title={news.title}
+                  description={news.description}
+                  url={news.url}
+                />
+              ))}
       </div>
 
       <div className={styles.slider__actions}>
-        <IconButton
-          icon={<ArrowIcon color={canPrev ? 'white' : 'black'} />}
-          disabled={!canPrev}
-          onClick={handlePrev}
-          iconProps={{ rotate: 180 }}
-        />
-        <IconButton
-          icon={<ArrowIcon color={canNext ? 'white' : 'black'} />}
-          disabled={!canNext}
-          onClick={handleNext}
-        />
+        <SkeletonBlock
+          loading={loading}
+          skeletonProps={{ circle: true, width: 64, height: 64 }}
+        >
+          <IconButton
+            icon={<ArrowIcon color={canPrev ? 'white' : 'black'} />}
+            disabled={!canPrev}
+            onClick={handlePrev}
+            iconProps={{ rotate: 180 }}
+          />
+        </SkeletonBlock>
+        <SkeletonBlock
+          loading={loading}
+          skeletonProps={{ circle: true, width: 64, height: 64 }}
+        >
+          <IconButton
+            icon={<ArrowIcon color={canNext ? 'white' : 'black'} />}
+            disabled={!canNext}
+            onClick={handleNext}
+          />
+        </SkeletonBlock>
       </div>
     </div>
   );
