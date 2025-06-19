@@ -18,4 +18,9 @@
   &:hover:not(:disabled) {
     background-color: $blue-dark;
   }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+    filter: brightness(0.85);
+  }
 }
