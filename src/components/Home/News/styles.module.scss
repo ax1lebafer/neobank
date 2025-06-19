@@ -10,6 +10,10 @@
   &__title {
     line-height: 50px;
     text-align: center;
+
+    @media (max-width: $tablet) {
+      font-size: 28px;
+    }
   }
 
   &__description {
