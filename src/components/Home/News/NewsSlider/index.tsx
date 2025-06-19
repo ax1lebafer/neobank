@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { getNewsAsync } from '@/store/actions/News';
 import { useEffect, useRef, useState } from 'react';
 import { NewsCard } from '@components/Home/News/NewsSlider/NewsCard';
+import { IconButton } from '@components/UI/IconButton';
+import { ArrowIcon } from '@assets/iconComponents/ArrowIcon';
 
 export const NewsSlider = () => {
   const dispatch = useAppDispatch();
@@ -16,37 +18,41 @@ export const NewsSlider = () => {
 
   const STEP = 500;
 
-  const handleGetNews = () => {
-    dispatch(getNewsAsync({}));
-  };
-
   const updateButtons = () => {
     const wr = sliderRef.current;
     if (!wr) return;
-    setCanPrev(wr.scrollLeft > 0);
-    setCanNext(wr.scrollLeft + wr.clientWidth < wr.scrollWidth);
+    setCanPrev(wr.scrollLeft > 1);
+    setCanNext(wr.scrollLeft + wr.clientWidth < wr.scrollWidth - 1);
   };
 
   useEffect(() => {
+    const wr = sliderRef.current;
+    if (!wr) return;
+    wr.addEventListener('scroll', updateButtons, { passive: true });
     updateButtons();
+    return () => {
+      wr.removeEventListener('scroll', updateButtons);
+    };
   }, [newsResponse]);
 
   const handlePrev = () => {
     sliderRef.current?.scrollBy({ left: -STEP, behavior: 'smooth' });
-    setTimeout(updateButtons, 300);
   };
   const handleNext = () => {
     sliderRef.current?.scrollBy({ left: STEP, behavior: 'smooth' });
-    setTimeout(updateButtons, 300);
   };
 
   useEffect(() => {
-    handleGetNews();
-  }, []);
+    dispatch(getNewsAsync({}));
+  }, [dispatch]);
 
   return (
     <div className={styles.slider}>
-      <div className={styles.slider__wrapper} ref={sliderRef}>
+      <div
+        className={styles.slider__wrapper}
+        ref={sliderRef}
+        onScroll={updateButtons}
+      >
         {newsResponse
           ?.filter(
             (
@@ -68,8 +74,17 @@ export const NewsSlider = () => {
       </div>
 
       <div className={styles.slider__actions}>
-        <p onClick={handlePrev}>Prev</p>
-        <p onClick={handleNext}>Next</p>
+        <IconButton
+          icon={<ArrowIcon color={canPrev ? 'white' : 'black'} />}
+          disabled={!canPrev}
+          onClick={handlePrev}
+          iconProps={{ rotate: 180 }}
+        />
+        <IconButton
+          icon={<ArrowIcon color={canNext ? 'white' : 'black'} />}
+          disabled={!canNext}
+          onClick={handleNext}
+        />
       </div>
     </div>
   );
