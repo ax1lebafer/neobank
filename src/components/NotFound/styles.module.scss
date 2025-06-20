@@ -1,0 +1,46 @@
+@use "@/styles/variables" as *;
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  gap: 40px;
+
+  @media (max-width: $tablet) {
+    flex-direction: column-reverse;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+
+    @media (max-width: $tablet) {
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__button {
+    max-width: 192px;
+    width: 100%;
+  }
+
+  &__image {
+    user-select: none;
+    -webkit-user-drag: none;
+
+    @media (max-width: $desktop) {
+      width: 300px;
+    }
+  }
+}
