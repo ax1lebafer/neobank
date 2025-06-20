@@ -1,0 +1,26 @@
+@use "@/styles/variables" as *;
+
+.iconButton {
+  background-color: $blue;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s;
+
+  &:disabled {
+    background-color: $white;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $blue-dark;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+    filter: brightness(0.85);
+  }
+}
