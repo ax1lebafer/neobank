@@ -8,6 +8,7 @@
   border-radius: 20px;
   padding: 22px 32px;
   box-shadow: 0 10px 20px 0 #363A781A;
+  position: relative;
 
   @media (max-width: $tablet) {
     flex-direction: column;
@@ -35,5 +36,19 @@
       font-weight: 400;
       font-family: "Nunino Sans", sans-serif;
     }
+  }
+
+  &__error {
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: $red;
+  }
+
+  &__success {
+    display: flex;
+    align-items: center;
   }
 }
