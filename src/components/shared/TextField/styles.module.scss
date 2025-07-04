@@ -1,0 +1,41 @@
+@use "@/styles/variables" as *;
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__required {
+    color: $red-light;
+  }
+
+  &__input {
+    padding: 13px 16px;
+    border-radius: 6px;
+    border: 1px solid #80808033;
+    max-height: 40px;
+    background-color: #F9F5E3;
+    transition: border .2s;
+
+    &:hover {
+      border: 1px solid black;
+    }
+
+    &:focus {
+      border: 2px solid $blue;
+    }
+  }
+
+  &_borderError {
+    border: 2px solid $red-light;
+  }
+
+  &__error {
+    color: $red-light;
+    margin-top: 2px;
+  }
+}

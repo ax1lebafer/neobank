@@ -1,0 +1,21 @@
+@use "@/styles/variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  border-radius: 28px;
+  background-color: $white;
+  box-shadow: 0 0 8px 0 #00000033;
+
+  &__top {
+
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
