@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import { TextField } from '@components/shared/TextField';
+import { Select } from '@components/shared/Select';
 
 export const PrescoringForm = () => {
   return (
@@ -23,6 +24,8 @@ export const PrescoringForm = () => {
           // error
           helperText="Enter your name"
         />
+
+        <Select />
       </div>
     </form>
   );
