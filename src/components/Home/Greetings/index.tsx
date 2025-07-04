@@ -1,8 +1,12 @@
 import styles from './styles.module.scss';
 import { CustomButton } from '@components/UI/CustomButton';
 import { BANK_CARDS } from '@components/Home/Greetings/constants';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/routes';
 
 export const Greetings = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.greetings}>
       <div className={styles.greetings__left}>
@@ -10,7 +14,9 @@ export const Greetings = () => {
           Choose the design you like and apply for card right now
         </h1>
 
-        <CustomButton>Choose the card</CustomButton>
+        <CustomButton onClick={() => navigate(ROUTES.loan)}>
+          Choose the card
+        </CustomButton>
       </div>
 
       <div className={styles.greetings__right}>
