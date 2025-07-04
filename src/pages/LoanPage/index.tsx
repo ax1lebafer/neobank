@@ -1,7 +1,9 @@
+import { BannerSection } from '@components/Loan/BannerSection';
+
 export const LoanPage = () => {
   return (
     <>
-      <h1>Loan page</h1>
+      <BannerSection />
     </>
   );
 };
