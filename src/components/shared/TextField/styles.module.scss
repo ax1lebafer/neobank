@@ -3,6 +3,7 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &__label {
     font-size: 16px;
@@ -14,12 +15,12 @@
   }
 
   &__input {
-    padding: 13px 16px;
+    padding: 13px 45px 13px 16px;
     border-radius: 6px;
     border: 1px solid #80808033;
     max-height: 40px;
     background-color: #F9F5E3;
-    transition: border .2s;
+    font-size: 14px;
 
     &:hover {
       border: 1px solid black;
@@ -37,5 +38,12 @@
   &__error {
     color: $red-light;
     margin-top: 2px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 53%;
+    right: 3%;
+    transform: translate(-50%, -50%);
   }
 }

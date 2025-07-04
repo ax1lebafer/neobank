@@ -14,6 +14,7 @@ export const PrescoringForm = () => {
           required
           error
           helperText="Enter your name"
+          placeholder="For exapmle Doe"
         />
 
         <TextField
