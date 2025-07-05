@@ -3,6 +3,33 @@
 .tabs {
 
   &__list {
+    position: relative;
+  }
 
+  &__button {
+    padding: 12px 16px;
+    background-color: transparent;
+    color: $swamp;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+  }
+
+  &__line {
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba($grey-light, 0.2);
+    display: block;
+  }
+
+  &__active {
+    border-bottom: 2px solid $swamp;
+    margin-bottom: -2px;
+  }
+
+  &__panel {
+    margin-top: 49px;
   }
 }
