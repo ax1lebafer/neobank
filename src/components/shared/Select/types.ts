@@ -10,3 +10,8 @@ export interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   };
   options?: { label: string; value: number | string }[];
 }
+
+export interface ISelectOption {
+  label: string;
+  value: number | string;
+}

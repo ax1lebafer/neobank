@@ -52,5 +52,7 @@
     border-radius: 25px;
     transform: rotate(10deg);
     margin-right: 70px;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 }
