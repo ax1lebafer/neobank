@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 import { ITextFieldProps } from '@components/shared/TextField/types';
 import styles from './styles.module.scss';
 import cn from 'classnames';
@@ -14,7 +14,7 @@ export const TextField: FC<ITextFieldProps> = ({
   inputProps,
   ...rest
 }) => {
-  const id = new Date().getMilliseconds();
+  const id = useId();
 
   return (
     <div className={cn(styles.inputWrapper, className)}>

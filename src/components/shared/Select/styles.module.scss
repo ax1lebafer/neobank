@@ -15,12 +15,17 @@
   }
 
   &__select {
-    padding: 13px 45px 13px 16px;
+    padding: 11px 45px 11px 16px;
     border-radius: 6px;
     border: 1px solid #80808033;
     max-height: 40px;
     background-color: #F9F5E3;
     font-size: 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("/src/assets/icons/chevron_down.svg");
+    background-repeat: no-repeat;
+    background-position: right 22px center;
 
     &:hover {
       border: 1px solid black;

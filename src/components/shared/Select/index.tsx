@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 import { ISelectProps } from '@components/shared/Select/types';
 import styles from './styles.module.scss';
 import cn from 'classnames';
@@ -13,7 +13,7 @@ export const Select: FC<ISelectProps> = ({
   required,
   ...rest
 }) => {
-  const id = new Date().getMilliseconds();
+  const id = useId();
 
   return (
     <div className={cn(styles.selectWrapper, className)}>
@@ -34,14 +34,16 @@ export const Select: FC<ISelectProps> = ({
           inputProps?.className
         )}
       >
-        {options ? (
+        {options && options.length > 0 ? (
           options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}
             </option>
           ))
         ) : (
-          <option value="">No data</option>
+          <option value="" disabled>
+            No data
+          </option>
         )}
       </select>
 
