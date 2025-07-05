@@ -1,0 +1,15 @@
+@use "@/styles/variables" as *;
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+
+  > *:nth-child(-n+3) {
+    grid-column: span 2;
+  }
+
+  > *:nth-child(n+4) {
+    grid-column: span 3;
+  }
+}
