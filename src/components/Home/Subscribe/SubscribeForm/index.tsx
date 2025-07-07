@@ -18,6 +18,7 @@ export const SubscribeForm = () => {
   } = useForm<ISubscribeFormValues>({
     resolver: yupResolver(subscribeSchema),
     defaultValues: { email: '' },
+    mode: 'onChange',
   });
 
   const [subscribed, setSubscribed] = useState(false);
