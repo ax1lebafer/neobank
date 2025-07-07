@@ -16,8 +16,8 @@ export const BannerSection = () => {
           </p>
           <ul className={styles.banner__contitions}>
             {CARD_CONDITIONS.map((c) => (
-              <Tooltip title={c.tooltip}>
-                <li className={styles.banner__item} key={c.label}>
+              <Tooltip title={c.tooltip} key={c.label}>
+                <li className={styles.banner__item}>
                   <h3>{c.label}</h3>
                   <p>{c.text}</p>
                 </li>
