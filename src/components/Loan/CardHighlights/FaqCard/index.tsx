@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 export const FaqCard = () => {
   return (
     <div className={styles.faq}>
-      <div>
+      <section>
         <h2 className={styles.faq__title}>Issuing and receiving a card</h2>
 
         {FAQ_RECEIVING_CARD.map((item) => (
@@ -18,9 +18,9 @@ export const FaqCard = () => {
             answer={item.answer}
           />
         ))}
-      </div>
+      </section>
 
-      <div>
+      <section>
         <h2 className={styles.faq__title}>Using a credit card</h2>
 
         {FAQ_USING_CARD.map((item) => (
@@ -30,7 +30,7 @@ export const FaqCard = () => {
             answer={item.answer}
           />
         ))}
-      </div>
+      </section>
     </div>
   );
 };
