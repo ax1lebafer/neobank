@@ -2,6 +2,7 @@ import styles from './styles.module.scss';
 import CardImage from '@/assets/images/card_1.png';
 import { CustomButton } from '@components/UI/CustomButton';
 import { CARD_CONDITIONS } from '@components/Loan/BannerSection/constants';
+import { Tooltip } from '@components/shared/Tooltip';
 
 export const BannerSection = () => {
   return (
@@ -15,10 +16,12 @@ export const BannerSection = () => {
           </p>
           <ul className={styles.banner__contitions}>
             {CARD_CONDITIONS.map((c) => (
-              <li className={styles.banner__item} key={c.label}>
-                <h3>{c.label}</h3>
-                <p>{c.text}</p>
-              </li>
+              <Tooltip title={c.tooltip}>
+                <li className={styles.banner__item} key={c.label}>
+                  <h3>{c.label}</h3>
+                  <p>{c.text}</p>
+                </li>
+              </Tooltip>
             ))}
           </ul>
 
