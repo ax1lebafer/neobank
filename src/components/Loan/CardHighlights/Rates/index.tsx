@@ -5,7 +5,7 @@ export const Rates = () => {
   return (
     <ul className={styles.rates}>
       {RATES_CARD.map((item) => (
-        <li className={styles.rates__item}>
+        <li className={styles.rates__item} key={item.name}>
           <p className={styles.rates__title}>{item.name}</p>
           <p className={styles.rates__description}>{item.description}</p>
         </li>

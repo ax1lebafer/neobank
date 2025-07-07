@@ -1,0 +1,57 @@
+@use "@/styles/variables" as *;
+
+.accordion {
+  border-left: 1px solid $grey-100;
+  border-right: 1px solid $grey-100;
+  border-top: 1px solid $grey-100;
+  padding: 32px;
+
+  &:last-child {
+    border-bottom: 1px solid $grey-100;
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__question {
+    font-weight: 500;
+  }
+
+  &__button {
+    background-color: transparent;
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+  }
+
+  &__details {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  &__content {
+    padding-top: 48px;
+  }
+
+  &__answer {
+    color: $gold-700;
+  }
+
+  &.accordion__open {
+
+    & .accordion__icon {
+      transform: rotate(180deg);
+    }
+
+    & .accordion__details {
+      max-height: 500px;
+    }
+  }
+}
