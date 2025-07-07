@@ -1,0 +1,22 @@
+@use "@/styles/variables" as *;
+
+.card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 28px;
+  box-shadow: 0 2px 4px 0 #00000033;
+
+  &__title {
+    color: rgba($grey-500, 0.9);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__cashback {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+}
