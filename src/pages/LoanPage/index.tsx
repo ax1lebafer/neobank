@@ -1,13 +1,14 @@
 import { BannerSection } from '@components/Loan/BannerSection';
-import { PrescoringForm } from '@components/Loan/PrescoringForm';
 import { CardHighlights } from '@components/Loan/CardHighlights';
+import { StepsToGet } from '@components/Loan/StepsToGet';
 
 export const LoanPage = () => {
   return (
     <>
       <BannerSection />
       <CardHighlights />
-      <PrescoringForm />
+      <StepsToGet />
+      {/*<PrescoringForm />*/}
     </>
   );
 };

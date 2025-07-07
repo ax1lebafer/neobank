@@ -1,0 +1,15 @@
+@use "@/styles/variables" as *;
+
+.steps {
+  margin-top: 96px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+}
