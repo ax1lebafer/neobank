@@ -37,8 +37,12 @@
       height: 24px;
       border-radius: 50%;
       background: $violet-500;
-      cursor: pointer;
+      cursor: grab;
       margin-top: -(24px / 2 - 8px / 2);
+
+      &:active {
+        cursor: grabbing;
+      }
     }
 
     &::-webkit-slider-runnable-track {

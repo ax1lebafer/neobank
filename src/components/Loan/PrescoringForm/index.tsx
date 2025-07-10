@@ -15,6 +15,8 @@ export const PrescoringForm = () => {
           <AmountSlider value={400000} />
         </div>
 
+        <span className={styles.form__divider} />
+
         <div className={styles.form__inputBlock}>12</div>
       </div>
 

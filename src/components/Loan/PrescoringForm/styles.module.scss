@@ -28,6 +28,11 @@
     justify-content: space-between;
   }
 
+  &__divider {
+    width: 1px;
+    border: 0.5px dashed rgba($grey-light, 0.4);
+  }
+
   &__inputBlock {
     flex: 1;
   }
