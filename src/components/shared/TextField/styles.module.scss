@@ -3,15 +3,20 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
-  position: relative;
+  //position: relative;
 
   &__label {
     font-size: 16px;
     margin-bottom: 8px;
+    font-weight: 500;
   }
 
   &__required {
     color: $red-light;
+  }
+
+  &__inner {
+    position: relative;
   }
 
   &__input {
@@ -21,6 +26,29 @@
     max-height: 40px;
     background-color: #F9F5E3;
     font-size: 14px;
+    width: 100%;
+
+    &[type="date"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+    }
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+      appearance: none;
+    }
 
     &:hover {
       border: 1px solid black;
@@ -35,15 +63,15 @@
     border: 2px solid $red-light;
   }
 
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(-50%, -50%);
+  }
+
   &__error {
     color: $red-light;
     margin-top: 2px;
-  }
-
-  &__icon {
-    position: absolute;
-    top: 53%;
-    right: 3%;
-    transform: translate(-50%, -50%);
   }
 }

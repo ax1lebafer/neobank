@@ -1,4 +1,4 @@
-import { FC, useId } from 'react';
+import { FC, useId, useRef } from 'react';
 import { ITextFieldProps } from '@components/shared/TextField/types';
 import styles from './styles.module.scss';
 import cn from 'classnames';
@@ -15,6 +15,13 @@ export const TextField: FC<ITextFieldProps> = ({
   ...rest
 }) => {
   const id = useId();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleOpenDatePicker = () => {
+    if (type === 'date' && inputRef.current?.showPicker) {
+      inputRef.current.showPicker();
+    }
+  };
 
   return (
     <div className={cn(styles.inputWrapper, className)}>
@@ -25,27 +32,31 @@ export const TextField: FC<ITextFieldProps> = ({
         </label>
       )}
 
-      <input
-        className={cn(
-          styles.inputWrapper__input,
-          error && styles.inputWrapper_borderError,
-          inputProps?.className
-        )}
-        id={`input_${id}`}
-        type={type}
-        {...rest}
-      />
+      <div className={styles.inputWrapper__inner}>
+        <input
+          onClick={handleOpenDatePicker}
+          ref={inputRef}
+          className={cn(
+            styles.inputWrapper__input,
+            error && styles.inputWrapper_borderError,
+            inputProps?.className
+          )}
+          id={`input_${id}`}
+          type={type}
+          {...rest}
+        />
+
+        <img
+          src={ValidIcon}
+          alt="Valid icon"
+          className={styles.inputWrapper__icon}
+        />
+      </div>
 
       {error &&
         (helperText ? (
           <p className={styles.inputWrapper__error}>{helperText}</p>
         ) : null)}
-
-      <img
-        src={ValidIcon}
-        alt="Valid icon"
-        className={styles.inputWrapper__icon}
-      />
     </div>
   );
 };
