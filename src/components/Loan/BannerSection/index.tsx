@@ -3,8 +3,10 @@ import CardImage from '@/assets/images/card_1.png';
 import { CustomButton } from '@components/UI/CustomButton';
 import { CARD_CONDITIONS } from '@components/Loan/BannerSection/constants';
 import { Tooltip } from '@components/shared/Tooltip';
+import { FC } from 'react';
+import { IBannerSectionProps } from '@components/Loan/BannerSection/types';
 
-export const BannerSection = () => {
+export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
   return (
     <section className={styles.banner}>
       <article className={styles.banner__card}>
@@ -25,7 +27,7 @@ export const BannerSection = () => {
             ))}
           </ul>
 
-          <CustomButton>Apply for card</CustomButton>
+          <CustomButton onClick={onApplyCard}>Apply for card</CustomButton>
         </div>
 
         <img
