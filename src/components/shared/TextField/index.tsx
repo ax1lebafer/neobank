@@ -3,6 +3,7 @@ import { ITextFieldProps } from '@components/shared/TextField/types';
 import styles from './styles.module.scss';
 import cn from 'classnames';
 import ValidIcon from '@/assets/icons/valid.svg';
+import InvalidIcon from '@/assets/icons/error.svg';
 
 export const TextField: FC<ITextFieldProps> = ({
   error,
@@ -12,10 +13,14 @@ export const TextField: FC<ITextFieldProps> = ({
   required,
   className,
   inputProps,
+  variant = 'outlined',
+  isValid = false,
   ...rest
 }) => {
   const id = useId();
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const textLength = String(rest.value ?? '').length;
+  const GAP = '0.5ch';
 
   const handleOpenDatePicker = () => {
     if (type === 'date' && inputRef.current?.showPicker) {
@@ -37,8 +42,12 @@ export const TextField: FC<ITextFieldProps> = ({
           onClick={handleOpenDatePicker}
           ref={inputRef}
           className={cn(
-            styles.inputWrapper__input,
-            error && styles.inputWrapper_borderError,
+            variant === 'outlined' && styles.inputWrapper__input,
+            variant === 'underline' && styles.inputWrapper__inputUnderline,
+            error && variant === 'outlined' && styles.inputWrapper_borderError,
+            error &&
+              variant === 'underline' &&
+              styles.inputWrapper__borderErrorUndeline,
             inputProps?.className
           )}
           id={`input_${id}`}
@@ -46,11 +55,30 @@ export const TextField: FC<ITextFieldProps> = ({
           {...rest}
         />
 
-        <img
-          src={ValidIcon}
-          alt="Valid icon"
-          className={styles.inputWrapper__icon}
-        />
+        {inputProps?.endAdornment && (
+          <div
+            className={styles.inputWrapper__adornment}
+            style={{
+              left: `calc(${textLength}ch + ${GAP})`,
+            }}
+          >
+            {inputProps.endAdornment}
+          </div>
+        )}
+
+        {error ? (
+          <img
+            src={InvalidIcon}
+            alt="Invalid icon"
+            className={styles.inputWrapper__icon}
+          />
+        ) : isValid ? (
+          <img
+            src={ValidIcon}
+            alt="Valid icon"
+            className={styles.inputWrapper__icon}
+          />
+        ) : null}
       </div>
 
       {error &&

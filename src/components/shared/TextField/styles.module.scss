@@ -3,7 +3,6 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
-  //position: relative;
 
   &__label {
     font-size: 16px;
@@ -59,8 +58,26 @@
     }
   }
 
+  &__inputUnderline {
+    border: none;
+    border-bottom: 1px solid rgba($grey-light, 0.2);
+    padding: 10px 0;
+    width: 100%;
+    font-size: 14px;
+  }
+
   &_borderError {
     border: 2px solid $red-light;
+  }
+
+  &__borderErrorUndeline {
+    border-bottom: 2px solid $red-light;
+  }
+
+  &__adornment {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &__icon {

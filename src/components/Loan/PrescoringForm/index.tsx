@@ -2,6 +2,7 @@ import styles from './styles.module.scss';
 import { ContactInformationFields } from '@components/Loan/PrescoringForm/ContactInformationFields';
 import { CustomButton } from '@components/UI/CustomButton';
 import { AmountSlider } from '@components/Loan/PrescoringForm/AmountSlider';
+import { TextField } from '@components/shared/TextField';
 
 export const PrescoringForm = () => {
   return (
@@ -17,7 +18,16 @@ export const PrescoringForm = () => {
 
         <span className={styles.form__divider} />
 
-        <div className={styles.form__inputBlock}>12</div>
+        <div className={styles.form__inputBlock}>
+          <h3>You have chosen the amount</h3>
+          <TextField
+            variant="underline"
+            inputProps={{
+              endAdornment: <p>₽</p>,
+            }}
+            className={styles.form__input}
+          />
+        </div>
       </div>
 
       <div className={styles.form__bottom}>

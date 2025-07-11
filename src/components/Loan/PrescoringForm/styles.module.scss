@@ -37,6 +37,11 @@
     flex: 1;
   }
 
+  &__input {
+    max-width: 250px;
+    margin-top: 10px;
+  }
+
   &__button {
     align-self: flex-end;
     border-radius: 8px;

@@ -1,4 +1,5 @@
 @use "@/styles/variables" as *;
+@use "sass:color";
 
 .slider {
   padding: 24px 24px 40px 24px;
@@ -38,7 +39,7 @@
       border-radius: 50%;
       background: $violet-500;
       cursor: grab;
-      margin-top: -(24px / 2 - 8px / 2);
+      margin-top: -8px;
 
       &:active {
         cursor: grabbing;
@@ -62,7 +63,7 @@
     &::-moz-range-track {
       height: 8px;
       border-radius: 4px;
-      background: lighten($violet-500, 50%);
+      background: $violet-500;
     }
   }
 

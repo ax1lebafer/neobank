@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
@@ -7,5 +7,8 @@ export interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   inputProps?: {
     className?: string;
+    endAdornment?: ReactNode;
   };
+  variant?: 'outlined' | 'underline';
+  isValid?: boolean;
 }
