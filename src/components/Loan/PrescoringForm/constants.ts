@@ -15,7 +15,7 @@ export const PRESCORING_INITIAL_FORM_VALUES: IPrescoringFormValues = {
   lastName: '',
   middleName: '',
   email: '',
-  birthdate: '',
+  birthdate: null,
   passportSeries: '',
   passportNumber: '',
 };

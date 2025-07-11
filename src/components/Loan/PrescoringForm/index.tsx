@@ -3,10 +3,29 @@ import { ContactInformationFields } from '@components/Loan/PrescoringForm/Contac
 import { CustomButton } from '@components/UI/CustomButton';
 import { AmountSlider } from '@components/Loan/PrescoringForm/AmountSlider';
 import { TextField } from '@components/shared/TextField';
+import { useForm } from 'react-hook-form';
+import { PRESCORING_INITIAL_FORM_VALUES } from '@components/Loan/PrescoringForm/constants';
+import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
+import { PrescoringSchema } from '@components/Loan/PrescoringForm/schema';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const PrescoringForm = () => {
+  const {
+    control,
+    formState: { errors, dirtyFields },
+    handleSubmit,
+  } = useForm<IPrescoringFormValues>({
+    defaultValues: PRESCORING_INITIAL_FORM_VALUES,
+    resolver: yupResolver(PrescoringSchema),
+    mode: 'onChange',
+  });
+
+  const onSubmit = (data: IPrescoringFormValues) => {
+    console.log(data);
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.form__top}>
         <div className={styles.form__sliderBlock}>
           <div className={styles.form__titleWrapper}>
@@ -34,7 +53,9 @@ export const PrescoringForm = () => {
         <ContactInformationFields />
       </div>
 
-      <CustomButton className={styles.form__button}>Continue</CustomButton>
+      <CustomButton className={styles.form__button} type="submit">
+        Continue
+      </CustomButton>
     </form>
   );
 };

@@ -3,9 +3,9 @@ export interface IPrescoringFormValues {
   term: number;
   firstName: string;
   lastName: string;
-  middleName: string | null;
+  middleName?: string | null;
   email: string;
-  birthdate: string | Date;
+  birthdate: Date | null;
   passportSeries: string;
   passportNumber: string;
 }
