@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import { FC } from 'react';
 import { IAmountSliderProps } from '@components/Loan/PrescoringForm/AmountSlider/types';
 
-export const AmountSlider: FC<IAmountSliderProps> = ({ value }) => {
+export const AmountSlider: FC<IAmountSliderProps> = ({ value, ...rest }) => {
   const MIN = 150000;
   const MAX = 600000;
   const STEP = 1000;
@@ -23,6 +23,7 @@ export const AmountSlider: FC<IAmountSliderProps> = ({ value }) => {
           min={MIN}
           max={MAX}
           step={STEP}
+          {...rest}
         />
         <div className={styles.slider__limits}>
           <p>150 000</p>

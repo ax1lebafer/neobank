@@ -3,6 +3,9 @@ import { ObjectSchema } from 'yup';
 import { digitsNumberReg, REGULAR_ONLY_LETTER } from '@/constants/regular';
 import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
 
+const eighteenYearsAgo = new Date();
+eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+
 export const PrescoringSchema: ObjectSchema<IPrescoringFormValues> =
   Yup.object<IPrescoringFormValues>().shape({
     amount: Yup.number()
@@ -17,13 +20,12 @@ export const PrescoringSchema: ObjectSchema<IPrescoringFormValues> =
       .required('Enter your last name')
       .matches(REGULAR_ONLY_LETTER, 'Only letters'),
     middleName: Yup.string().optional().nullable(),
-    email: Yup.string().required().email('Incorrect email address'),
+    email: Yup.string()
+      .required('Incorrect email address')
+      .email('Incorrect email address'),
     birthdate: Yup.date()
       .required('Incorrect date of birth')
-      .max(
-        new Date().setFullYear(new Date().getFullYear() - 18),
-        'You must be at least 18 years old'
-      ),
+      .max(eighteenYearsAgo, 'You must be at least 18 years old'),
     passportSeries: Yup.string()
       .required('The series must be 4 digits')
       .matches(digitsNumberReg(4), 'The series must be 4 digits'),
