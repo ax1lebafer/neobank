@@ -5,4 +5,13 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   grid-auto-rows: minmax(163px, auto);
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: $phone) {
+    grid-template-columns: 1fr;
+  }
 }

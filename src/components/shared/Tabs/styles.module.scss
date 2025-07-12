@@ -1,9 +1,28 @@
 @use "@/styles/variables" as *;
 
 .tabs {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba($grey-light, 0.2);
+    pointer-events: none;
+  }
 
   &__list {
-    position: relative;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__button {
@@ -12,21 +31,12 @@
     color: $swamp;
     font-size: 16px;
     font-weight: 500;
-    border-bottom: 2px solid transparent;
-  }
-
-  &__line {
-    position: absolute;
-    height: 2px;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba($grey-light, 0.2);
-    display: block;
+    white-space: nowrap;
+    height: 42px;
   }
 
   &__active {
     border-bottom: 2px solid $swamp;
-    margin-bottom: -2px;
   }
 
   &__panel {

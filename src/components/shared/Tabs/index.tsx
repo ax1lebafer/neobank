@@ -27,7 +27,6 @@ export const Tabs: FC<ITabsProps> = ({ tabs, defaultIndex = 0, onChange }) => {
             {tab.label}
           </button>
         ))}
-        <span className={styles.tabs__line}></span>
       </div>
 
       {tabs.map((tab, idx) => (

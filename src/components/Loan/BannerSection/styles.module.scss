@@ -15,6 +15,7 @@
 
     @media (max-width: $tablet) {
       flex-direction: column-reverse;
+      //align-items: flex-start;
     }
   }
 
@@ -24,6 +25,10 @@
     gap: 32px;
     align-items: flex-start;
     width: 100%;
+
+    @media (max-width: $tablet) {
+      align-items: center;
+    }
   }
 
   &__title {
@@ -41,6 +46,11 @@
     display: flex;
     align-items: center;
     gap: 80px;
+
+    @media (max-width: $tablet) {
+      gap: 40px;
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
@@ -63,8 +73,12 @@
 
     @media (max-width: $desktop) {
       width: 280px;
-      height: 160px;
+      height: auto;
       margin-right: 0;
+    }
+
+    @media (max-width: $phone) {
+      width: 200px;
     }
   }
 }
