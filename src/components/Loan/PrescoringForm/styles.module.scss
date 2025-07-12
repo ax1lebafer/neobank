@@ -9,10 +9,18 @@
   background-color: $white;
   box-shadow: 0 0 8px 0 #00000033;
 
+  @media (max-width: $desktop) {
+    padding: 20px;
+  }
+
   &__top {
     margin-bottom: 32px;
     display: flex;
     gap: 40px;
+
+    @media (max-width: $tablet) {
+      gap: 25px;
+    }
   }
 
   &__sliderBlock {
@@ -20,6 +28,10 @@
     flex-direction: column;
     gap: 32px;
     flex: 1;
+
+    @media (max-width: $tablet) {
+      flex: 1.5;
+    }
   }
 
   &__titleWrapper {
@@ -35,6 +47,10 @@
 
   &__inputBlock {
     flex: 1;
+
+    @media (max-width: $tablet) {
+      flex: 0.5;
+    }
   }
 
   &__input {

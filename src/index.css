@@ -36,6 +36,14 @@ input {
 h1 {
   font-size: 48px;
   font-weight: 700;
+
+  @media (max-width: 1300px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 920px) {
+    font-size: 32px;
+  }
 }
 
 h2 {

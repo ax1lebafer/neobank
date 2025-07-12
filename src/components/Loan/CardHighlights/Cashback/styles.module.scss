@@ -4,5 +4,5 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  grid-auto-rows: 163px;
+  grid-auto-rows: minmax(163px, auto);
 }

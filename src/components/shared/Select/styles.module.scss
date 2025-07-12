@@ -9,6 +9,10 @@
     font-size: 16px;
     margin-bottom: 8px;
     font-weight: 500;
+
+    @media (max-width: $tablet) {
+      font-size: 14px;
+    }
   }
 
   &__required {
@@ -44,6 +48,10 @@
   &__error {
     color: $red-light;
     margin-top: 2px;
+
+    @media (max-width: $tablet) {
+      font-size: 14px;
+    }
   }
 
   &__icon {
