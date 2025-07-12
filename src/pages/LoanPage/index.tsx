@@ -10,7 +10,7 @@ export const LoanPage = () => {
   const scrollToForm = () => {
     prescoringRef.current?.scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
+      block: 'start',
     });
   };
 
