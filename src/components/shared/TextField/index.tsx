@@ -40,7 +40,6 @@ export const TextField: FC<ITextFieldProps> = ({
       <div className={styles.inputWrapper__inner}>
         <input
           onClick={handleOpenDatePicker}
-          ref={inputRef}
           className={cn(
             variant === 'outlined' && styles.inputWrapper__input,
             variant === 'underline' && styles.inputWrapper__inputUnderline,
@@ -53,6 +52,7 @@ export const TextField: FC<ITextFieldProps> = ({
           id={`input_${id}`}
           type={type}
           {...rest}
+          ref={inputRef}
         />
 
         {inputProps?.endAdornment && (
