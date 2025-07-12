@@ -5,6 +5,10 @@
   border-radius: 28px;
   padding: 32px;
 
+  @media (max-width: $phone) {
+    padding: 20px;
+  }
+
   &__title {
     margin-top: 24px;
     margin-bottom: 16px;
