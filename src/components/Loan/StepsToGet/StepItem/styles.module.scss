@@ -12,6 +12,10 @@
     align-items: center;
     gap: 36px;
     justify-content: space-between;
+
+    @media (max-width: $tablet) {
+      gap: 20px;
+    }
   }
 
   &__index {
@@ -26,6 +30,15 @@
     >p {
       font-size: 20px;
       font-weight: 700;
+
+      @media (max-width: $phone) {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: $phone) {
+      width: 25px;
+      height: 25px;
     }
   }
 

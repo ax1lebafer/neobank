@@ -21,6 +21,10 @@
     @media (max-width: $tablet) {
       gap: 25px;
     }
+
+    @media (max-width: $phone) {
+      flex-direction: column;
+    }
   }
 
   &__sliderBlock {
@@ -43,6 +47,10 @@
   &__divider {
     width: 1px;
     border: 0.5px dashed rgba($grey-light, 0.4);
+
+    @media (max-width: $phone) {
+      display: none;
+    }
   }
 
   &__inputBlock {
@@ -57,6 +65,10 @@
     max-width: 250px;
     margin-top: 10px;
     font-size: 16px;
+
+    @media (max-width: $phone) {
+      max-width: 100%;
+    }
   }
 
   &__button {
