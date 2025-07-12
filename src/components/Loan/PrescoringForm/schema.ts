@@ -22,7 +22,10 @@ export const PrescoringSchema: ObjectSchema<IPrescoringFormValues> =
     middleName: Yup.string().optional().nullable(),
     email: Yup.string()
       .required('Incorrect email address')
-      .email('Incorrect email address'),
+      .email('Incorrect email address')
+      .test('no-hyphens', 'Email must not contain hyphens', (value) =>
+        value ? !value.includes('-') : true
+      ),
     birthdate: Yup.date()
       .required('Incorrect date of birth')
       .max(eighteenYearsAgo, 'You must be at least 18 years old'),

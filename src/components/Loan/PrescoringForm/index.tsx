@@ -8,8 +8,14 @@ import { PRESCORING_INITIAL_FORM_VALUES } from '@components/Loan/PrescoringForm/
 import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
 import { PrescoringSchema } from '@components/Loan/PrescoringForm/schema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { postPrescoringAsync } from '@/store/actions/Loan';
 
 export const PrescoringForm = () => {
+  const dispatch = useAppDispatch();
+
+  const { loading } = useAppSelector((state) => state.loan);
+
   const {
     control,
     formState: { errors, dirtyFields },
@@ -21,8 +27,17 @@ export const PrescoringForm = () => {
   });
 
   const onSubmit = (data: IPrescoringFormValues) => {
-    console.log(data);
+    const payload: IPrescoringFormValues = {
+      ...data,
+      middleName: data.middleName === '' ? null : data.middleName,
+    };
+
+    dispatch(postPrescoringAsync(payload));
   };
+
+  if (loading) {
+    return <p>Loading</p>;
+  }
 
   return (
     <form
