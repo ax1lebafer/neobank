@@ -7,12 +7,14 @@ import {
 } from 'react-redux';
 import exchangeReducer from '@/store/reducers/ExchangeRate';
 import newsReducer from '@/store/reducers/News';
+import loanReducer from '@/store/reducers/Loan';
 
 export const makeStore = () => {
   return configureStore({
     reducer: combineReducers({
       exchangeRate: exchangeReducer,
       news: newsReducer,
+      loan: loanReducer,
     }),
   });
 };

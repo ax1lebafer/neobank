@@ -1,0 +1,20 @@
+@use "@/styles/variables" as *;
+
+.steps {
+  margin-top: 48px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 36px;
+
+    @media (max-width: $tablet) {
+      gap: 20px;
+    }
+  }
+}

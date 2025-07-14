@@ -1,0 +1,38 @@
+@use "@/styles/variables" as *;
+
+.rates {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__item {
+    max-width: 1020px;
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 10px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $blue-gray-400;
+    }
+  }
+
+  &__title {
+    max-width: 320px;
+    width: 100%;
+    font-weight: 500;
+
+    @media (max-width: $phone) {
+      max-width: 200px;
+    }
+  }
+
+  &__description {
+    color: $grey-500;
+    font-weight: 500;
+    white-space: pre-line;
+    flex: 1;
+  }
+}

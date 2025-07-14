@@ -1,0 +1,53 @@
+@use "@/styles/variables" as *;
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  outline: none;
+
+  &:focus-within .tooltip__text,
+  &:hover .tooltip__text {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.tooltip__text {
+  visibility: hidden;
+  opacity: 0;
+  width: 170px;
+  background-color: $black-300;
+  color: $white;
+  padding: 8px 7px;
+  font-size: 12px;
+  font-weight: 500;
+
+  position: absolute;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.top .tooltip__text {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.bottom .tooltip__text {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.left .tooltip__text {
+  right: 100%;
+  top: 50%;
+  transform: translateX(-8px) translateY(-50%);
+}
+
+.right .tooltip__text {
+  left: 100%;
+  top: 50%;
+  transform: translateX(8px) translateY(-50%);
+}

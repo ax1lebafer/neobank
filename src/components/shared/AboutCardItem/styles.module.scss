@@ -1,0 +1,17 @@
+@use "@/styles/variables" as *;
+
+.card {
+  box-shadow: 0 2px 4px 0 #00000033;
+  border-radius: 28px;
+  padding: 32px;
+
+  @media (max-width: $phone) {
+    padding: 20px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+}

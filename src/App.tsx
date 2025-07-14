@@ -4,12 +4,14 @@ import { ROUTES } from '@/routes';
 import { Layout } from '@components/Layout';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { LoanPage } from '@/pages/LoanPage';
 
 function App() {
   return (
     <Routes>
       <Route path={ROUTES.home} element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path={ROUTES.loan} element={<LoanPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

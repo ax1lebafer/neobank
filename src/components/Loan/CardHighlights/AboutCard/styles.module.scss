@@ -1,0 +1,28 @@
+@use "@/styles/variables" as *;
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+  grid-auto-rows: minmax(236px, auto);
+
+  @media (max-width: $tablet) {
+    gap: 20px;
+  }
+
+  > *:nth-child(-n+3) {
+    grid-column: span 2;
+
+    @media (max-width: $tablet) {
+      grid-column: span 6;
+    }
+  }
+
+  > *:nth-child(n+4) {
+    grid-column: span 3;
+
+    @media (max-width: $tablet) {
+      grid-column: span 6;
+    }
+  }
+}

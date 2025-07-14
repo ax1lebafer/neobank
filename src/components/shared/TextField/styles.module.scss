@@ -1,0 +1,104 @@
+@use "@/styles/variables" as *;
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+
+    @media (max-width: $tablet) {
+      font-size: 14px;
+    }
+  }
+
+  &__required {
+    color: $red-light;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__input {
+    padding: 12px 45px 12px 16px;
+    border-radius: 6px;
+    border: 1px solid #80808033;
+    max-height: 40px;
+    background-color: #F9F5E3;
+    font-size: 14px;
+    width: 100%;
+
+    &[type="date"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+    }
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type="number"] {
+      -moz-appearance: textfield;
+      appearance: none;
+    }
+
+    &:hover {
+      border: 1px solid black;
+    }
+
+    &:focus {
+      border: 2px solid $blue;
+    }
+  }
+
+  &__inputUnderline {
+    border: none;
+    border-bottom: 1px solid rgba($grey-light, 0.2);
+    padding: 10px 0;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  &_borderError {
+    border: 2px solid $red-light;
+  }
+
+  &__borderErrorUndeline {
+    border-bottom: 2px solid $red-light;
+  }
+
+  &__adornment {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  &__error {
+    color: $red-light;
+    margin-top: 2px;
+
+    @media (max-width: $tablet) {
+      font-size: 14px;
+    }
+  }
+}
