@@ -1,5 +1,5 @@
 import { Control, FieldErrors, UseFormStateReturn } from 'react-hook-form';
-import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
+import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 
 export interface IContactInformationFieldsProps {
   control: Control<IPrescoringFormValues>;

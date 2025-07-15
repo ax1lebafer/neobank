@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '@/services/axiosInstance';
-import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
+import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 import { IPrescoringResponseDTO } from '@/types/loan';
 
 export const postPrescoringAsync = createAsyncThunk<

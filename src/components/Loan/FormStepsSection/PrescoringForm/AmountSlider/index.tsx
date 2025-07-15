@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import { FC } from 'react';
-import { IAmountSliderProps } from '@components/Loan/PrescoringForm/AmountSlider/types';
+import { IAmountSliderProps } from '@components/Loan/FormStepsSection/PrescoringForm/AmountSlider/types';
 
 export const AmountSlider: FC<IAmountSliderProps> = ({ value, ...rest }) => {
   const MIN = 150000;

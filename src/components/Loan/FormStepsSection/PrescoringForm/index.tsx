@@ -1,12 +1,12 @@
 import styles from './styles.module.scss';
-import { ContactInformationFields } from '@components/Loan/PrescoringForm/ContactInformationFields';
+import { ContactInformationFields } from '@components/Loan/FormStepsSection/PrescoringForm/ContactInformationFields';
 import { CustomButton } from '@components/UI/CustomButton';
-import { AmountSlider } from '@components/Loan/PrescoringForm/AmountSlider';
+import { AmountSlider } from '@components/Loan/FormStepsSection/PrescoringForm/AmountSlider';
 import { TextField } from '@components/shared/TextField';
 import { Controller, useForm } from 'react-hook-form';
-import { PRESCORING_INITIAL_FORM_VALUES } from '@components/Loan/PrescoringForm/constants';
-import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
-import { PrescoringSchema } from '@components/Loan/PrescoringForm/schema';
+import { PRESCORING_INITIAL_FORM_VALUES } from '@components/Loan/FormStepsSection/PrescoringForm/constants';
+import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
+import { PrescoringSchema } from '@components/Loan/FormStepsSection/PrescoringForm/schema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { postPrescoringAsync } from '@/store/actions/Loan';

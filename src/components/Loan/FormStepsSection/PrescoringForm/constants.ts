@@ -1,5 +1,5 @@
 import { ISelectOption } from '@components/shared/Select/types';
-import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
+import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 
 export const TERM_OPTIONS: ISelectOption[] = [
   { label: '6 month', value: 6 },

@@ -1,9 +1,9 @@
 import styles from './styles.module.scss';
 import { TextField } from '@components/shared/TextField';
 import { Select } from '@components/shared/Select';
-import { TERM_OPTIONS } from '@components/Loan/PrescoringForm/constants';
+import { TERM_OPTIONS } from '@components/Loan/FormStepsSection/PrescoringForm/constants';
 import { FC } from 'react';
-import { IContactInformationFieldsProps } from '@components/Loan/PrescoringForm/ContactInformationFields/types';
+import { IContactInformationFieldsProps } from '@components/Loan/FormStepsSection/PrescoringForm/ContactInformationFields/types';
 import { Controller } from 'react-hook-form';
 
 export const ContactInformationFields: FC<IContactInformationFieldsProps> = ({

@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { ObjectSchema } from 'yup';
 import { digitsNumberReg, REGULAR_ONLY_LETTER } from '@/constants/regular';
-import { IPrescoringFormValues } from '@components/Loan/PrescoringForm/types';
+import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 
 const eighteenYearsAgo = new Date();
 eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
