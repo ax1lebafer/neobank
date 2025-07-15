@@ -1,35 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILoanState } from '@/store/reducers/Loan/types';
 import { postPrescoringAsync } from '@/store/actions/Loan';
+import { IPrescoringResponseDTO } from '@/types/loan';
 
 const initialState: ILoanState = {
   error: null,
   loading: false,
-  prescoring: null,
+  offers: null,
 };
 
 const loanSlice = createSlice({
   name: 'LOAN_SLICE',
   initialState,
-  reducers: {},
+  reducers: {
+    setOffers: (state, action: PayloadAction<IPrescoringResponseDTO[]>) => {
+      state.offers = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(postPrescoringAsync.pending, (state) => {
         state.loading = true;
         state.error = null;
-        state.prescoring = null;
+        state.offers = null;
       })
       .addCase(postPrescoringAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.prescoring = action.payload;
+        state.offers = action.payload;
       })
       .addCase(postPrescoringAsync.rejected, (state, action) => {
         state.loading = false;
-        state.prescoring = null;
+        state.offers = null;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
       });
   },
 });
+
+export const { setOffers } = loanSlice.actions;
 
 export default loanSlice.reducer;

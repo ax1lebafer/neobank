@@ -11,6 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { postPrescoringAsync } from '@/store/actions/Loan';
 import { SkeletonBlock } from '@components/UI/SkeletonBlock';
+import { PRESCORING_OFFERS } from '@/constants/localStorageKeys';
 
 export const PrescoringForm = () => {
   const dispatch = useAppDispatch();
@@ -28,15 +29,21 @@ export const PrescoringForm = () => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: IPrescoringFormValues) => {
+  const onSubmit = async (data: IPrescoringFormValues) => {
     const payload: IPrescoringFormValues = {
       ...data,
       middleName: data.middleName === '' ? null : data.middleName,
     };
 
-    dispatch(postPrescoringAsync(payload));
+    try {
+      const offers = await dispatch(postPrescoringAsync(payload)).unwrap();
 
-    reset();
+      localStorage.setItem(PRESCORING_OFFERS, JSON.stringify(offers));
+
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -8,6 +8,7 @@ import { subscribeSchema } from '@components/Home/Subscribe/SubscribeForm/schema
 import { ISubscribeFormValues } from '@components/Home/Subscribe/SubscribeForm/types';
 import apiClient from '@/services/axiosInstance';
 import { useEffect, useState } from 'react';
+import { IS_SUBSCRIBED } from '@/constants/localStorageKeys';
 
 export const SubscribeForm = () => {
   const {
@@ -28,7 +29,7 @@ export const SubscribeForm = () => {
     try {
       setError(null);
       await apiClient.post('/email', data);
-      localStorage.setItem('subscribed', 'true');
+      localStorage.setItem(IS_SUBSCRIBED, 'true');
       setSubscribed(true);
       reset();
     } catch (error: unknown) {
@@ -41,7 +42,7 @@ export const SubscribeForm = () => {
   };
 
   useEffect(() => {
-    const subscribed = localStorage.getItem('subscribed');
+    const subscribed = localStorage.getItem(IS_SUBSCRIBED);
 
     if (subscribed === 'true') {
       setSubscribed(true);
