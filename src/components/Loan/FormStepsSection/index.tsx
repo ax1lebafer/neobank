@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { PRESCORING_OFFERS } from '@/constants/localStorageKeys';
 import { setOffers } from '@/store/reducers/Loan';
 import { Offers } from '@components/Loan/FormStepsSection/Offers';
+import styles from './styles.module.scss';
 
 export const FormStepsSection: FC<IFormStepsSectionProps> = ({ ref }) => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ export const FormStepsSection: FC<IFormStepsSectionProps> = ({ ref }) => {
   }, [dispatch]);
 
   return (
-    <section ref={ref}>
+    <section ref={ref} className={styles.prescoring}>
       {!isOffersAvailable ? <PrescoringForm /> : <Offers offers={offers} />}
     </section>
   );
