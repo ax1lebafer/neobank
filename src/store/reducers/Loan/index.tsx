@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILoanState } from '@/store/reducers/Loan/types';
-import { postPrescoringAsync } from '@/store/actions/Loan';
+import { applyOfferAsync, postPrescoringAsync } from '@/store/actions/Loan';
 import { IPrescoringResponseDTO } from '@/types/loan';
 
 const initialState: ILoanState = {
@@ -32,6 +32,18 @@ const loanSlice = createSlice({
       .addCase(postPrescoringAsync.rejected, (state, action) => {
         state.loading = false;
         state.offers = null;
+        state.error = action.payload ?? action.error.message ?? 'Unknown error';
+      })
+      .addCase(applyOfferAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(applyOfferAsync.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(applyOfferAsync.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
       });
   },

@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import apiClient from '@/services/axiosInstance';
 import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 import { IPrescoringResponseDTO } from '@/types/loan';
+import { IS_OFFER_ACCEPTED } from '@/constants/localStorageKeys';
 
 export const postPrescoringAsync = createAsyncThunk<
   IPrescoringResponseDTO[],
@@ -17,6 +18,26 @@ export const postPrescoringAsync = createAsyncThunk<
     return response.data;
   } catch (error: unknown) {
     console.log(error);
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});
+
+export const applyOfferAsync = createAsyncThunk<
+  void,
+  IPrescoringResponseDTO,
+  { rejectValue: string }
+>('loan/applyOffer', async (arg, thunkAPI) => {
+  try {
+    const response = await apiClient.post('/application/apply', arg);
+
+    return response.data;
+  } catch (error: unknown) {
+    localStorage.removeItem(IS_OFFER_ACCEPTED);
+
     if (error instanceof Error) {
       return thunkAPI.rejectWithValue(error.message);
     }

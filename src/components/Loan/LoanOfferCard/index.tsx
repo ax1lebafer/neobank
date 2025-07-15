@@ -6,6 +6,8 @@ import { CustomButton } from '@components/UI/CustomButton';
 import SurpriseImage from '@/assets/images/surprise.svg';
 import ValidIcon from '@/assets/icons/valid.svg';
 import ErrorIcon from '@/assets/icons/error.svg';
+import { useAppSelector } from '@/store/store';
+import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 
 const currency = new Intl.NumberFormat('ru-RU', {
   style: 'currency',
@@ -13,7 +15,7 @@ const currency = new Intl.NumberFormat('ru-RU', {
   minimumFractionDigits: 0,
 });
 
-export const LoanOfferCard: FC<ILoanOfferCardProps> = ({ offer }) => {
+export const LoanOfferCard: FC<ILoanOfferCardProps> = ({ offer, onAccept }) => {
   const {
     requestedAmount,
     totalAmount,
@@ -23,6 +25,8 @@ export const LoanOfferCard: FC<ILoanOfferCardProps> = ({ offer }) => {
     isInsuranceEnabled,
     isSalaryClient,
   } = offer;
+
+  const { loading } = useAppSelector((state) => state.loan);
 
   const items = [
     { label: 'Requested amount:', value: currency.format(requestedAmount) },
@@ -50,18 +54,47 @@ export const LoanOfferCard: FC<ILoanOfferCardProps> = ({ offer }) => {
 
   return (
     <article className={styles.offer}>
-      <img src={SurpriseImage} alt="Offer image" />
+      <SkeletonBlock
+        loading={loading}
+        skeletonProps={{ width: 150, height: 150 }}
+      >
+        <img src={SurpriseImage} alt="Offer image" />
+      </SkeletonBlock>
 
       <ul className={styles.offer__list}>
         {items.map((item) => (
-          <li key={item.label} className={styles.offer__item}>
-            <span>{item.label}</span>
-            <span>{item.value}</span>
-          </li>
+          <SkeletonBlock
+            loading={loading}
+            key={item.label}
+            skeletonProps={{
+              className: styles.offer__item,
+              width: 200,
+              height: 18,
+            }}
+          >
+            <li key={item.label} className={styles.offer__item}>
+              <span>{item.label}</span>
+              <span>{item.value}</span>
+            </li>
+          </SkeletonBlock>
         ))}
       </ul>
 
-      <CustomButton className={styles.offer__button}>Select</CustomButton>
+      <SkeletonBlock
+        loading={loading}
+        skeletonProps={{
+          className: styles.offer__button,
+          width: 150,
+          height: 50,
+        }}
+      >
+        <CustomButton
+          className={styles.offer__button}
+          onClick={() => onAccept(offer)}
+        >
+          Select
+        </CustomButton>
+      </SkeletonBlock>
     </article>
   );
 };
