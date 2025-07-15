@@ -12,6 +12,7 @@ function App() {
       <Route path={ROUTES.home} element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path={ROUTES.loan} element={<LoanPage />} />
+        <Route path="/loan/:id" element={<HomePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
