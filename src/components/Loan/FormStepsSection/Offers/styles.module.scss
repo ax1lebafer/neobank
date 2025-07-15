@@ -3,4 +3,6 @@
 .offers {
   display: flex;
   gap: 15px;
+  align-items: flex-start;
+  justify-content: space-between;
 }

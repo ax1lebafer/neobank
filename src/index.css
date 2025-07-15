@@ -33,6 +33,11 @@ input {
   outline: none;
 }
 
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 h1 {
   font-size: 48px;
   font-weight: 700;
