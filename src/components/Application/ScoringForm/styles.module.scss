@@ -1,0 +1,17 @@
+@use "@/styles/variables" as *;
+
+.scoring {
+  background-color: $white;
+  border-radius: 28px;
+  box-shadow: 0 2px 4px 0 #00000033;
+  padding: 32px;
+  margin-top: 24px;
+
+  &__titleWrapper {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    justify-content: space-between;
+    margin-bottom: 41px;
+  }
+}
