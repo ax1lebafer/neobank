@@ -7,7 +7,12 @@ export const ScoringSchema: ObjectSchema<IScoringFormValues> =
   Yup.object<IScoringFormValues>().shape({
     gender: Yup.string().required('Select one of the options'),
     maritalStatus: Yup.string().required('Select one of the options'),
-    dependentAmount: Yup.number().required('Select one of the options'),
+    dependentAmount: Yup.number()
+      .nullable()
+      .transform((value, originalValue) =>
+        originalValue === '' ? null : value
+      )
+      .required('Select one of the options'),
     passportIssueDate: Yup.date().required(
       'Incorrect date of passport issue date'
     ),
