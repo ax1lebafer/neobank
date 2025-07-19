@@ -12,8 +12,6 @@ export const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(pathname);
-
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (

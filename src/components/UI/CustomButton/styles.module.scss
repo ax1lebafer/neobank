@@ -10,6 +10,10 @@
   transition: background-color .3s;
 
   &:hover {
-    background-color: $blue-dark;
+    background-color: $blue-100;
+  }
+
+  &:disabled {
+    background-color: $blue-100;
   }
 }
