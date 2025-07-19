@@ -14,7 +14,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path={ROUTES.loan} element={<LoanPage />} />
         <Route path={ROUTES.application} element={<ApplicationPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={ROUTES.notFound} element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
