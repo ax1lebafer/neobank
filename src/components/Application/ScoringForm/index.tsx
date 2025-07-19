@@ -27,8 +27,6 @@ export const ScoringForm = () => {
   const { handleSubmit, reset } = methods;
 
   const onSubmit = async (data: IScoringFormValues) => {
-    console.log(data);
-
     const payload: IScoringPayload = {
       id: id!,
       ...data,

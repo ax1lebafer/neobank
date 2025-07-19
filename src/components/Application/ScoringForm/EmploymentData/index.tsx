@@ -36,7 +36,7 @@ export const EmploymentData = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              value={field.value ?? undefined}
+              value={field.value ?? ''}
               type="number"
               label="Your employer INN"
               placeholder="000000000000"
