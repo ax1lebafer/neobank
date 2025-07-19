@@ -1,0 +1,14 @@
+@use "@/styles/variables" as *;
+
+.pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+  gap: 32px;
+
+  &__sub {
+    color: $grey;
+  }
+}
