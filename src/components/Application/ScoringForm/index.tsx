@@ -7,8 +7,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ScoringSchema } from '@components/Application/ScoringForm/schema';
 import { CustomButton } from '@components/UI/CustomButton';
 import { EmploymentData } from '@components/Application/ScoringForm/EmploymentData';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch } from '@/store/store';
+import { IScoringPayload } from '@/store/actions/Loan/types';
+import { sendScoringAsync } from '@/store/actions/Loan';
 
 export const ScoringForm = () => {
+  const { id } = useParams();
+
+  const dispatch = useAppDispatch();
+
   const methods = useForm<IScoringFormValues>({
     defaultValues: SCORING_INITIAL_FORM_VALUES,
     mode: 'onChange',
@@ -19,6 +27,19 @@ export const ScoringForm = () => {
 
   const onSubmit = (data: IScoringFormValues) => {
     console.log(data);
+
+    const payload: IScoringPayload = {
+      id: id!,
+      ...data,
+      dependentAmount: data.dependentAmount!,
+      passportIssueDate: data.passportIssueDate!.toISOString(),
+      employerINN: data.employerINN!,
+      salary: data.salary!,
+      workExperienceTotal: data.workExperienceTotal!,
+      workExperienceCurrent: data.workExperienceCurrent!,
+    };
+
+    dispatch(sendScoringAsync(payload));
   };
 
   return (
