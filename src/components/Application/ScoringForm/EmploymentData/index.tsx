@@ -52,7 +52,7 @@ export const EmploymentData = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              value={field.value ?? undefined}
+              value={field.value ?? ''}
               type="number"
               label="Your salary"
               placeholder="For example 100 000"
@@ -82,7 +82,7 @@ export const EmploymentData = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              value={field.value ?? undefined}
+              value={field.value ?? ''}
               type="number"
               label="Your work experience total"
               placeholder="For example 10"
@@ -98,7 +98,7 @@ export const EmploymentData = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              value={field.value ?? undefined}
+              value={field.value ?? ''}
               type="number"
               label="Your work experience current"
               placeholder="For example 2"
