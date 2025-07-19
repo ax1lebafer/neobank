@@ -16,6 +16,9 @@ const loanSlice = createSlice({
     setOffers: (state, action: PayloadAction<IPrescoringResponseDTO[]>) => {
       state.offers = action.payload;
     },
+    resetOffers: (state) => {
+      state.offers = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,6 +52,6 @@ const loanSlice = createSlice({
   },
 });
 
-export const { setOffers } = loanSlice.actions;
+export const { setOffers, resetOffers } = loanSlice.actions;
 
 export default loanSlice.reducer;

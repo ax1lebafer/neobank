@@ -4,6 +4,7 @@ import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/Prescor
 import { IPrescoringResponseDTO } from '@/types/loan';
 import { IS_OFFER_ACCEPTED } from '@/constants/localStorageKeys';
 import { IScoringPayload } from '@/store/actions/Loan/types';
+import { IApplicationDTO } from '@/types/application';
 
 export const postPrescoringAsync = createAsyncThunk<
   IPrescoringResponseDTO[],
@@ -58,6 +59,26 @@ export const sendScoringAsync = createAsyncThunk<
     const response = await apiClient.put(
       `/application/registration/${id}`,
       rest
+    );
+
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});
+
+export const getApplicationById = createAsyncThunk<
+  IApplicationDTO,
+  string,
+  { rejectValue: string }
+>('loan/getApplicationById', async (id, thunkAPI) => {
+  try {
+    const response = await apiClient.get<IApplicationDTO>(
+      `/admin/application/${id}`
     );
 
     return response.data;
