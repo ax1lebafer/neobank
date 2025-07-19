@@ -6,6 +6,8 @@
   box-shadow: 0 2px 4px 0 #00000033;
   padding: 32px;
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
 
   &__titleWrapper {
     display: flex;
@@ -13,5 +15,13 @@
     max-width: 50%;
     justify-content: space-between;
     margin-bottom: 41px;
+  }
+
+  &__button {
+    align-self: flex-end;
+    margin-top: 24px;
+    border-radius: 8px;
+    max-width: 150px;
+    width: 100%;
   }
 }

@@ -3,8 +3,8 @@ import { IScoringFormValues } from '@components/Application/ScoringForm/types';
 export const SCORING_INITIAL_FORM_VALUES: IScoringFormValues = {
   gender: '',
   maritalStatus: '',
-  dependentAmount: undefined,
-  passportIssueDate: undefined,
+  dependentAmount: '',
+  passportIssueDate: null,
   passportIssueBranch: '',
   employmentStatus: '',
   employerINN: null,
@@ -27,6 +27,7 @@ export const MARITAL_STATUS = [
 ];
 
 export const DEPENDENTS_OPTIONS = [
+  { label: '0', value: 0 },
   { label: '1', value: 1 },
   { label: '2', value: 2 },
   { label: '3', value: 3 },

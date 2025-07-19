@@ -1,8 +1,8 @@
 export interface IScoringFormValues {
   gender: string;
   maritalStatus: string;
-  dependentAmount: number | undefined;
-  passportIssueDate: Date | undefined;
+  dependentAmount: number | string;
+  passportIssueDate: Date | null;
   passportIssueBranch: string;
   employmentStatus: string;
   employerINN: number | null;
