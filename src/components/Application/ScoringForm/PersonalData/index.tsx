@@ -52,7 +52,7 @@ export const PersonalData = () => {
             required
             options={DEPENDENTS_OPTIONS}
             {...field}
-            value={field.value ?? undefined}
+            value={field.value ?? ''}
             error={!!errors.dependentAmount}
             helperText={errors.dependentAmount?.message}
           />

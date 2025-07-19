@@ -1,3 +1,4 @@
 export const PRESCORING_OFFERS = 'PRESCORING_OFFERS';
 export const IS_SUBSCRIBED = 'IS_SUBSCRIBED';
 export const IS_OFFER_ACCEPTED = 'IS_OFFER_ACCEPTED';
+export const SCORING = 'SCORING';

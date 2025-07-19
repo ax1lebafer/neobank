@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '@/store/store';
 import { IScoringPayload } from '@/store/actions/Loan/types';
 import { sendScoringAsync } from '@/store/actions/Loan';
+import { SCORING } from '@/constants/localStorageKeys';
 
 export const ScoringForm = () => {
   const { id } = useParams();
@@ -23,9 +24,9 @@ export const ScoringForm = () => {
     resolver: yupResolver(ScoringSchema),
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, reset } = methods;
 
-  const onSubmit = (data: IScoringFormValues) => {
+  const onSubmit = async (data: IScoringFormValues) => {
     console.log(data);
 
     const payload: IScoringPayload = {
@@ -39,7 +40,15 @@ export const ScoringForm = () => {
       workExperienceCurrent: data.workExperienceCurrent!,
     };
 
-    dispatch(sendScoringAsync(payload));
+    try {
+      await dispatch(sendScoringAsync(payload));
+
+      localStorage.setItem(SCORING, 'true');
+
+      reset();
+    } catch {
+      localStorage.removeItem(SCORING);
+    }
   };
 
   return (
