@@ -97,6 +97,7 @@ export const PersonalData = () => {
             placeholder="000000"
             label="Division code"
             required
+            type="number"
             error={!!errors.passportIssueBranch}
             helperText={errors.passportIssueBranch?.message}
             isValid={dirtyFields.passportIssueBranch}

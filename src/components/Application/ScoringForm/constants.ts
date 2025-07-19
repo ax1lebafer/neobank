@@ -34,3 +34,17 @@ export const DEPENDENTS_OPTIONS = [
   { label: '4', value: 4 },
   { label: '5', value: 5 },
 ];
+
+export const EMPLOYMENT_STATUS_OPTIONS = [
+  { label: 'Unemployed', value: 'UNEMPLOYED' },
+  { label: 'Self employed', value: 'SELF_EMPLOYED' },
+  { label: 'Employed', value: 'EMPLOYED' },
+  { label: 'Business owner', value: 'BUSINESS_OWNER' },
+];
+
+export const POSITION_OPTIONS = [
+  { label: 'Worker', value: 'WORKER' },
+  { label: 'Mid manager', value: 'MID_MANAGER' },
+  { label: 'Top manager', value: 'TOP_MANAGER' },
+  { label: 'Owner', value: 'OWNER' },
+];

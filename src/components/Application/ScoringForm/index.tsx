@@ -6,6 +6,7 @@ import { PersonalData } from '@components/Application/ScoringForm/PersonalData';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ScoringSchema } from '@components/Application/ScoringForm/schema';
 import { CustomButton } from '@components/UI/CustomButton';
+import { EmploymentData } from '@components/Application/ScoringForm/EmploymentData';
 
 export const ScoringForm = () => {
   const methods = useForm<IScoringFormValues>({
@@ -29,6 +30,8 @@ export const ScoringForm = () => {
         </div>
 
         <PersonalData />
+
+        <EmploymentData />
 
         <CustomButton className={styles.scoring__button} type="submit">
           Continue
