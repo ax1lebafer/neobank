@@ -1,0 +1,20 @@
+@use "@/styles/variables" as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head {
+
+  }
+
+  &__row {
+    height: 40px;
+    border-bottom: 1px solid $grey-100;
+  }
+
+  &__cell {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

@@ -6,6 +6,7 @@ import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { LoanPage } from '@/pages/LoanPage';
 import { ApplicationPage } from '@/pages/ApplicationPage';
+import { ApplicationDocumentPage } from '@/pages/ApplicationDocumentPage';
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path={ROUTES.loan} element={<LoanPage />} />
         <Route path={ROUTES.application} element={<ApplicationPage />} />
+        <Route
+          path={ROUTES.applicationDocument}
+          element={<ApplicationDocumentPage />}
+        />
         <Route path={ROUTES.notFound} element={<NotFoundPage />} />
       </Route>
     </Routes>
