@@ -8,15 +8,17 @@ import { ScoringSchema } from '@components/Application/ScoringForm/schema';
 import { CustomButton } from '@components/UI/CustomButton';
 import { EmploymentData } from '@components/Application/ScoringForm/EmploymentData';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from '@/store/store';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import { IScoringPayload } from '@/store/actions/Loan/types';
 import { sendScoringAsync } from '@/store/actions/Loan';
 import { SCORING } from '@/constants/localStorageKeys';
+import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 
 export const ScoringForm = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.loan);
 
   const methods = useForm<IScoringFormValues>({
     defaultValues: SCORING_INITIAL_FORM_VALUES,
@@ -44,27 +46,33 @@ export const ScoringForm = () => {
       localStorage.setItem(SCORING, 'true');
 
       reset();
+      window.location.reload();
     } catch {
       localStorage.removeItem(SCORING);
     }
   };
 
   return (
-    <FormProvider {...methods}>
-      <form className={styles.scoring} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.scoring__titleWrapper}>
-          <h2>Continuation of the application</h2>
-          <p>Step 2 of 5</p>
-        </div>
+    <SkeletonBlock
+      loading={loading}
+      skeletonProps={{ height: 600, borderRadius: 28 }}
+    >
+      <FormProvider {...methods}>
+        <form className={styles.scoring} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.scoring__titleWrapper}>
+            <h2>Continuation of the application</h2>
+            <p>Step 2 of 5</p>
+          </div>
 
-        <PersonalData />
+          <PersonalData />
 
-        <EmploymentData />
+          <EmploymentData />
 
-        <CustomButton className={styles.scoring__button} type="submit">
-          Continue
-        </CustomButton>
-      </form>
-    </FormProvider>
+          <CustomButton className={styles.scoring__button} type="submit">
+            Continue
+          </CustomButton>
+        </form>
+      </FormProvider>
+    </SkeletonBlock>
   );
 };

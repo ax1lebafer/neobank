@@ -4,12 +4,16 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { useEffect, useState } from 'react';
 import { PRESCORING_OFFERS, SCORING } from '@/constants/localStorageKeys';
 import { PendingMessage } from '@components/Application/PendingMessage';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { setScoringSend } from '@/store/reducers/Loan';
 
 export const ApplicationPage = () => {
   const { id } = useParams();
+  const dispatch = useAppDispatch();
+
+  const { isScoringSend } = useAppSelector((state) => state.loan);
 
   const [applicationId, setApplicationId] = useState<string | null>(null);
-  const [isScoringSend, setIsScoringSend] = useState(false);
 
   useEffect(() => {
     const offers = localStorage.getItem(PRESCORING_OFFERS);
@@ -29,9 +33,9 @@ export const ApplicationPage = () => {
     const storedScoring = localStorage.getItem(SCORING);
 
     if (storedScoring) {
-      setIsScoringSend(true);
+      dispatch(setScoringSend(true));
     }
-  }, []);
+  }, [isScoringSend, dispatch]);
 
   if (!applicationId || id !== applicationId) {
     return <NotFoundPage />;
