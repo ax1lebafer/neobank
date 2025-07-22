@@ -1,0 +1,20 @@
+@use "@/styles/variables" as *;
+
+.form {
+  padding: 32px;
+  background-color: $white;
+  border-radius: 28px;
+  box-shadow: 0 2px 4px 0 #00000033;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    max-width: 40%;
+    justify-content: space-between;
+    margin-bottom: 75px;
+  }
+
+  &__step {
+    font-weight: 500;
+  }
+}
