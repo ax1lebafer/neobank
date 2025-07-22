@@ -1,11 +1,18 @@
 @use "@/styles/variables" as *;
+@use "@/styles/scrollbar" as *;
+
+.tableWrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  @include scrollbar();
+}
 
 .table {
   width: 100%;
   border-collapse: collapse;
 
   &__head {
-
   }
 
   &__row {
@@ -16,5 +23,12 @@
   &__cell {
     font-size: 12px;
     font-weight: 500;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $white;
   }
 }

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILoanState } from '@/store/reducers/Loan/types';
 import {
   applyOfferAsync,
+  getApplicationById,
   postPrescoringAsync,
   sendScoringAsync,
 } from '@/store/actions/Loan';
@@ -12,6 +13,7 @@ const initialState: ILoanState = {
   loading: false,
   offers: null,
   isScoringSend: false,
+  applicationById: null,
 };
 
 const loanSlice = createSlice({
@@ -71,6 +73,21 @@ const loanSlice = createSlice({
         state.loading = false;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
         state.isScoringSend = false;
+      })
+      .addCase(getApplicationById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.applicationById = null;
+      })
+      .addCase(getApplicationById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.applicationById = action.payload;
+      })
+      .addCase(getApplicationById.rejected, (state, action) => {
+        state.loading = false;
+        state.applicationById = null;
+        state.error = action.payload ?? action.error.message ?? 'Unknown error';
       });
   },
 });
