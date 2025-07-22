@@ -51,6 +51,8 @@ export const TextField: FC<ITextFieldProps> = ({
           )}
           id={`input_${id}`}
           type={type}
+          maxLength={inputProps?.maxLength}
+          inputMode={inputProps?.inputMode}
           {...rest}
           ref={inputRef}
         />

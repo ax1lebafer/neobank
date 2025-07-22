@@ -8,6 +8,7 @@ import {
   MARITAL_STATUS,
 } from '@components/Application/ScoringForm/constants';
 import { TextField } from '@components/shared/TextField';
+import { formatDivisionCode } from '@components/Application/ScoringForm/PersonalData/utils';
 
 export const PersonalData = () => {
   const {
@@ -95,10 +96,11 @@ export const PersonalData = () => {
         render={({ field }) => (
           <TextField
             {...field}
-            placeholder="000000"
+            placeholder="000-000"
             label="Division code"
             required
-            type="number"
+            onChange={(e) => field.onChange(formatDivisionCode(e.target.value))}
+            inputProps={{ maxLength: 7 }}
             error={!!errors.passportIssueBranch}
             helperText={errors.passportIssueBranch?.message}
             isValid={dirtyFields.passportIssueBranch}

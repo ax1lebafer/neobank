@@ -40,6 +40,7 @@ export const EmploymentData = () => {
               type="number"
               label="Your employer INN"
               placeholder="000000000000"
+              inputProps={{ maxLength: 12 }}
               error={!!errors.employerINN}
               helperText={errors.employerINN?.message}
               isValid={dirtyFields.employerINN}

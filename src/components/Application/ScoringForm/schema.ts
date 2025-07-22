@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 import { ObjectSchema } from 'yup';
 import { IScoringFormValues } from '@components/Application/ScoringForm/types';
-import { digitsNumberReg } from '@/constants/regular';
 
 export const ScoringSchema: ObjectSchema<IScoringFormValues> =
   Yup.object<IScoringFormValues>().shape({
@@ -18,7 +17,7 @@ export const ScoringSchema: ObjectSchema<IScoringFormValues> =
       .max(new Date(), 'The date cannot be greater than the current one'),
     passportIssueBranch: Yup.string()
       .required('The series must be 6 digits')
-      .matches(digitsNumberReg(6), 'The series must be 6 digits'),
+      .length(7, 'The series must be 6 digits'),
     employmentStatus: Yup.string().required('Select one of the options'),
     employerINN: Yup.number()
       .transform((_, originalValue) =>
