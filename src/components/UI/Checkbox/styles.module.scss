@@ -1,0 +1,20 @@
+@use "@/styles/variables" as *;
+
+.checkboxInner {
+
+  &__label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 18px;
+  }
+  
+  &__checkbox {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    accent-color: $blue-300;
+  }
+}
