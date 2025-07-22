@@ -30,7 +30,7 @@ export const ScoringSchema: ObjectSchema<IScoringFormValues> =
       .test(
         'len',
         'Department code must be 12 digits',
-        (val) => typeof val === 'number' && String(val).length === 12
+        (val) => String(val).length === 12
       ),
     salary: Yup.number()
       .typeError('Salary must be a number')
