@@ -7,7 +7,7 @@ export const SCORING_INITIAL_FORM_VALUES: IScoringFormValues = {
   passportIssueDate: null,
   passportIssueBranch: '',
   employmentStatus: '',
-  employerINN: null,
+  employerINN: '',
   salary: null,
   position: '',
   workExperienceTotal: null,

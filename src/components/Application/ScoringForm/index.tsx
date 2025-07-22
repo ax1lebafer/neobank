@@ -31,13 +31,19 @@ export const ScoringForm = () => {
   const onSubmit = async (data: IScoringFormValues) => {
     const payload: IScoringPayload = {
       id: id!,
-      ...data,
+      gender: data.gender,
+      maritalStatus: data.maritalStatus,
       dependentAmount: data.dependentAmount!,
       passportIssueDate: data.passportIssueDate!.toISOString(),
-      employerINN: data.employerINN!,
-      salary: data.salary!,
-      workExperienceTotal: data.workExperienceTotal!,
-      workExperienceCurrent: data.workExperienceCurrent!,
+      passportIssueBranch: data.passportIssueBranch,
+      employment: {
+        employmentStatus: data.employmentStatus,
+        employerINN: String(data.employerINN),
+        salary: data.salary!,
+        position: data.position,
+        workExperienceTotal: data.workExperienceTotal!,
+        workExperienceCurrent: data.workExperienceCurrent!,
+      },
     };
 
     try {

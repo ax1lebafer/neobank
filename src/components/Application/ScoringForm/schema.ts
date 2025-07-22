@@ -33,12 +33,7 @@ export const ScoringSchema: ObjectSchema<IScoringFormValues> =
         (val) => typeof val === 'number' && String(val).length === 12
       ),
     salary: Yup.number()
-      .transform((_, originalValue) =>
-        typeof originalValue === 'string' && /^\d+$/.test(originalValue)
-          ? parseInt(originalValue, 10)
-          : originalValue
-      )
-      .typeError('Department code must be a number')
+      .typeError('Salary must be a number')
       .required('Enter your salary'),
     position: Yup.string().required('Select one of the options'),
     workExperienceTotal: Yup.number()

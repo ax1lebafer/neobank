@@ -5,10 +5,12 @@ export interface IScoringPayload {
   dependentAmount: number;
   passportIssueDate: string;
   passportIssueBranch: string;
-  employmentStatus: string;
-  employerINN: number;
-  salary: number;
-  position: string;
-  workExperienceTotal: number;
-  workExperienceCurrent: number;
+  employment: {
+    employmentStatus: string;
+    employerINN: string;
+    salary: number;
+    position: string;
+    workExperienceTotal: number;
+    workExperienceCurrent: number;
+  };
 }

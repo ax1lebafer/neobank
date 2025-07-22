@@ -37,8 +37,8 @@ export const EmploymentData = () => {
             <TextField
               {...field}
               value={field.value ?? ''}
-              type="number"
               label="Your employer INN"
+              type="number"
               placeholder="000000000000"
               inputProps={{ maxLength: 12 }}
               error={!!errors.employerINN}
