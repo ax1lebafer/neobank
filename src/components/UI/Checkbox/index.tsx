@@ -1,16 +1,21 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 import { ICheckboxProps } from '@components/UI/Checkbox/types';
 import styles from './styles.module.scss';
 
 export const Checkbox: FC<ICheckboxProps> = ({ label, id, ...rest }) => {
-  const inputId = id ?? rest.name;
+  const generatedId = useId();
+
+  const inputId = id ?? rest.name ?? generatedId;
 
   return (
     <div className={styles.checkboxInner}>
-      <label htmlFor={inputId} className={styles.checkboxInner__label}>
+      <label
+        htmlFor={`checkbox_${inputId}`}
+        className={styles.checkboxInner__label}
+      >
         <input
           type="checkbox"
-          id={inputId}
+          id={`checkbox_${inputId}`}
           className={styles.checkboxInner__checkbox}
           {...rest}
         />

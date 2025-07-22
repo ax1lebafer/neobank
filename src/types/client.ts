@@ -1,3 +1,5 @@
+import { IEmploymentData } from '@/types/employment';
+
 export interface IClientDTO {
   firstName: string;
   lastName: string;
@@ -11,6 +13,6 @@ export interface IClientDTO {
   passportIssueBranch: string | null;
   maritalStatus: string | null;
   dependentAmount: number | null;
-  employment: number | null;
+  employment: IEmploymentData | null;
   account: number | null;
 }

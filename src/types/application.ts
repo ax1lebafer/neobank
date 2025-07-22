@@ -1,9 +1,10 @@
 import { IClientDTO } from '@/types/client';
+import { ICreditData } from '@/types/credit';
 
 export interface IApplicationDTO {
   id: number;
   client: IClientDTO;
-  credit: string | null;
+  credit: ICreditData | null;
   status: string;
   creationDate: string;
   signDate: string | null;
