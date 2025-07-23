@@ -87,7 +87,7 @@ export const PaymentScheduleForm = () => {
         title="Deny application"
         submitButtonLabel="Deny"
       >
-        123
+        <p>You exactly sure, you want to cancel this application?</p>
       </Modal>
     </SkeletonBlock>
   );
