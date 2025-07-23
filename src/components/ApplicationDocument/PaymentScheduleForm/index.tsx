@@ -5,11 +5,14 @@ import { useAppSelector } from '@/store/store';
 import { DOCUMENT_COLUMNS } from '@components/ApplicationDocument/PaymentScheduleForm/constants';
 import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 import { CustomButton } from '@components/UI/CustomButton';
+import { useState } from 'react';
 
 export const PaymentScheduleForm = () => {
   const { applicationById, loading } = useAppSelector((state) => state.loan);
 
   const { credit } = applicationById ?? {};
+
+  const [isAgree, setIsAgree] = useState(false);
 
   return (
     <SkeletonBlock
@@ -26,9 +29,19 @@ export const PaymentScheduleForm = () => {
           items={credit?.paymentSchedule || []}
         />
 
-        <div>
-          <CustomButton color="error">Deny</CustomButton>
-          <Checkbox label="I agree with the payment schedule" />
+        <div className={styles.form__footer}>
+          <CustomButton className={styles.form__button} color="error">
+            Deny
+          </CustomButton>
+          <div className={styles.form__argee}>
+            <Checkbox
+              label="I agree with the payment schedule"
+              onChange={() => setIsAgree((prevState) => !prevState)}
+            />
+            <CustomButton className={styles.form__button} disabled={!isAgree}>
+              Send
+            </CustomButton>
+          </div>
         </div>
       </form>
     </SkeletonBlock>

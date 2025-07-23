@@ -1,7 +1,6 @@
 @use "@/styles/variables" as *;
 
 .checkboxInner {
-
   &__label {
     cursor: pointer;
     user-select: none;
@@ -9,8 +8,9 @@
     align-items: center;
     gap: 14px;
     font-size: 18px;
+    white-space: nowrap;
   }
-  
+
   &__checkbox {
     cursor: pointer;
     width: 20px;
