@@ -8,6 +8,7 @@ import { CustomButton } from '@components/UI/CustomButton';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { agreePaymentScheduleAsync } from '@/store/actions/Loan';
+import { Modal } from '@components/UI/Modal';
 
 export const PaymentScheduleForm = () => {
   const { id } = useParams();
@@ -18,6 +19,15 @@ export const PaymentScheduleForm = () => {
   const { credit } = applicationById ?? {};
 
   const [isAgree, setIsAgree] = useState(false);
+  const [openDenyModal, setOpenDenyModal] = useState(false);
+
+  const handleOpenDenyModal = () => {
+    setOpenDenyModal(true);
+  };
+
+  const handleCloseDenyModal = () => {
+    setOpenDenyModal(false);
+  };
 
   const onSubmit = () => {
     if (!id) return;
@@ -47,7 +57,11 @@ export const PaymentScheduleForm = () => {
         />
 
         <div className={styles.form__footer}>
-          <CustomButton className={styles.form__button} color="error">
+          <CustomButton
+            className={styles.form__button}
+            color="error"
+            onClick={handleOpenDenyModal}
+          >
             Deny
           </CustomButton>
           <div className={styles.form__argee}>
@@ -66,6 +80,15 @@ export const PaymentScheduleForm = () => {
           </div>
         </div>
       </form>
+
+      <Modal
+        open={openDenyModal}
+        onClose={handleCloseDenyModal}
+        title="Deny application"
+        submitButtonLabel="Deny"
+      >
+        123
+      </Modal>
     </SkeletonBlock>
   );
 };
