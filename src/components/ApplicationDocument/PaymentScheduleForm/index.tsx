@@ -1,25 +1,42 @@
 import styles from './styles.module.scss';
 import { Table } from '@components/shared/Table';
 import { Checkbox } from '@components/UI/Checkbox';
-import { useAppSelector } from '@/store/store';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import { DOCUMENT_COLUMNS } from '@components/ApplicationDocument/PaymentScheduleForm/constants';
 import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 import { CustomButton } from '@components/UI/CustomButton';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { agreePaymentScheduleAsync } from '@/store/actions/Loan';
 
 export const PaymentScheduleForm = () => {
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+
   const { applicationById, loading } = useAppSelector((state) => state.loan);
 
   const { credit } = applicationById ?? {};
 
   const [isAgree, setIsAgree] = useState(false);
 
+  const onSubmit = () => {
+    if (!id) return;
+
+    dispatch(agreePaymentScheduleAsync(id));
+  };
+
   return (
     <SkeletonBlock
       loading={loading}
       skeletonProps={{ height: 500, borderRadius: 28 }}
     >
-      <form className={styles.form}>
+      <form
+        className={styles.form}
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit();
+        }}
+      >
         <div className={styles.form__header}>
           <h2>Payment Schedule</h2>
           <p className={styles.form__step}>Step 3 of 5</p>
@@ -38,7 +55,11 @@ export const PaymentScheduleForm = () => {
               label="I agree with the payment schedule"
               onChange={() => setIsAgree((prevState) => !prevState)}
             />
-            <CustomButton className={styles.form__button} disabled={!isAgree}>
+            <CustomButton
+              className={styles.form__button}
+              disabled={!isAgree}
+              type="submit"
+            >
               Send
             </CustomButton>
           </div>

@@ -7,4 +7,5 @@ export interface ILoanState {
   offers: IPrescoringResponseDTO[] | null;
   isScoringSend: boolean;
   applicationById: IApplicationDTO | null;
+  isAgreeWithPaymentSchedule: boolean;
 }

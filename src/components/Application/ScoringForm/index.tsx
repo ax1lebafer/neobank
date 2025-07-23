@@ -52,7 +52,6 @@ export const ScoringForm = () => {
       localStorage.setItem(SCORING, 'true');
 
       reset();
-      window.location.reload();
     } catch {
       localStorage.removeItem(SCORING);
     }
