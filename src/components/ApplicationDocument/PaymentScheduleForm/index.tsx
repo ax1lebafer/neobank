@@ -53,7 +53,8 @@ export const PaymentScheduleForm = () => {
           <div className={styles.form__argee}>
             <Checkbox
               label="I agree with the payment schedule"
-              onChange={() => setIsAgree((prevState) => !prevState)}
+              onChange={(e) => setIsAgree(e.target.checked)}
+              checked={isAgree}
             />
             <CustomButton
               className={styles.form__button}
