@@ -9,4 +9,6 @@ export interface IModalProps {
   className?: string;
   closeButtonLabel?: string;
   submitButtonLabel?: string;
+  fallback?: () => void;
+  withCancelBtn?: boolean;
 }

@@ -16,6 +16,8 @@ export const Modal: FC<IModalProps> = ({
   className,
   closeButtonLabel = 'Cancel',
   submitButtonLabel = 'Ok',
+  fallback,
+  withCancelBtn = false,
 }) => {
   useEffect(() => {
     if (open) {
@@ -28,12 +30,17 @@ export const Modal: FC<IModalProps> = ({
     };
   }, [open]);
 
+  const handleClose = () => {
+    onClose();
+    fallback?.();
+  };
+
   if (!open) {
     return null;
   }
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={handleClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {title && (
           <div>
@@ -41,7 +48,7 @@ export const Modal: FC<IModalProps> = ({
           </div>
         )}
 
-        <button className={styles.modal__close} onClick={onClose}>
+        <button className={styles.modal__close} onClick={handleClose}>
           <img
             src={CloseIcon}
             className={styles.modal__icon}
@@ -62,9 +69,14 @@ export const Modal: FC<IModalProps> = ({
                 {submitButtonLabel}
               </CustomButton>
             )}
-            <CustomButton className={styles.modal__button} onClick={onClose}>
-              {closeButtonLabel}
-            </CustomButton>
+            {!withCancelBtn && (
+              <CustomButton
+                className={styles.modal__button}
+                onClick={handleClose}
+              >
+                {closeButtonLabel}
+              </CustomButton>
+            )}
           </div>
         </div>
       </div>

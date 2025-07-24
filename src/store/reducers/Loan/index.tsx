@@ -35,6 +35,15 @@ const loanSlice = createSlice({
     setStep: (state, action: PayloadAction<number>) => {
       state.step = action.payload;
     },
+    resetLoanState: (state) => {
+      state.error = null;
+      state.loading = false;
+      state.offers = null;
+      state.isScoringSend = false;
+      state.applicationById = null;
+      state.isAgreeWithPaymentSchedule = false;
+      state.step = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -113,7 +122,12 @@ const loanSlice = createSlice({
   },
 });
 
-export const { setOffers, resetOffers, setScoringSend, setStep } =
-  loanSlice.actions;
+export const {
+  setOffers,
+  resetOffers,
+  setScoringSend,
+  setStep,
+  resetLoanState,
+} = loanSlice.actions;
 
 export default loanSlice.reducer;
