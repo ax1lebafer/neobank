@@ -8,6 +8,7 @@ import { LoanPage } from '@/pages/LoanPage';
 import { ApplicationPage } from '@/pages/ApplicationPage';
 import { ApplicationDocumentPage } from '@/pages/ApplicationDocumentPage';
 import { RequireApplicationId } from '@components/RequireApplicationId';
+import { SignDocumentPage } from '@/pages/SignDocumentPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             path={ROUTES.applicationDocument}
             element={<ApplicationDocumentPage />}
           />
+          <Route path={ROUTES.signDocument} element={<SignDocumentPage />} />
         </Route>
 
         <Route path={ROUTES.notFound} element={<NotFoundPage />} />

@@ -1,0 +1,14 @@
+@use "@/styles/variables" as *;
+
+.attach {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+
+  > p {
+    font-weight: 500;
+    font-size: 20px;
+  }
+}
