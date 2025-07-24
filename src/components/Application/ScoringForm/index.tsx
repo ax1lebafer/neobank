@@ -11,8 +11,9 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { IScoringPayload } from '@/store/actions/Loan/types';
 import { sendScoringAsync } from '@/store/actions/Loan';
-import { SCORING } from '@/constants/localStorageKeys';
+import { SCORING, STEP } from '@/constants/localStorageKeys';
 import { SkeletonBlock } from '@components/UI/SkeletonBlock';
+import { setStep } from '@/store/reducers/Loan';
 
 export const ScoringForm = () => {
   const { id } = useParams();
@@ -50,6 +51,8 @@ export const ScoringForm = () => {
       await dispatch(sendScoringAsync(payload));
 
       localStorage.setItem(SCORING, 'true');
+      localStorage.setItem(STEP, '3');
+      dispatch(setStep(3));
 
       reset();
     } catch {

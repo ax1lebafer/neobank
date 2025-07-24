@@ -2,11 +2,12 @@ import styles from './styles.module.scss';
 import { LoanOfferCard } from '@components/Loan/LoanOfferCard';
 import { FC, useEffect, useState } from 'react';
 import { IOffersProps } from '@components/Loan/FormStepsSection/Offers/types';
-import { IS_OFFER_ACCEPTED } from '@/constants/localStorageKeys';
+import { IS_OFFER_ACCEPTED, STEP } from '@/constants/localStorageKeys';
 import { OfferAccepted } from '@components/Loan/OfferAccepted';
 import { useAppDispatch } from '@/store/store';
 import { applyOfferAsync } from '@/store/actions/Loan';
 import { IPrescoringResponseDTO } from '@/types/loan';
+import { setStep } from '@/store/reducers/Loan';
 
 export const Offers: FC<IOffersProps> = ({ offers }) => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,8 @@ export const Offers: FC<IOffersProps> = ({ offers }) => {
     try {
       await dispatch(applyOfferAsync(offer)).unwrap();
       localStorage.setItem(IS_OFFER_ACCEPTED, 'true');
+      localStorage.setItem(STEP, '2');
+      dispatch(setStep(2));
       setOfferAccepted(true);
     } catch {
       localStorage.removeItem(IS_OFFER_ACCEPTED);

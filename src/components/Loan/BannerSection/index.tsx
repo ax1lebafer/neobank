@@ -7,7 +7,7 @@ import { FC, useEffect, useState } from 'react';
 import { IBannerSectionProps } from '@components/Loan/BannerSection/types';
 import { useAppSelector } from '@/store/store';
 import { useNavigate } from 'react-router-dom';
-import { IS_OFFER_ACCEPTED } from '@/constants/localStorageKeys';
+import { IS_OFFER_ACCEPTED, STEP } from '@/constants/localStorageKeys';
 
 export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
   const navigate = useNavigate();
@@ -18,8 +18,19 @@ export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
 
   const offerId = offers?.[0].applicationId;
 
-  const handleRedirectToScoring = () => {
-    navigate(`/loan/${offerId}`);
+  const handleRedirectToNextStep = () => {
+    const stepStored = localStorage.getItem(STEP);
+
+    switch (stepStored) {
+      case '2':
+        navigate(`/loan/${offerId}`);
+        break;
+      case '3':
+        navigate(`/loan/${offerId}/document`);
+        break;
+      default:
+        return;
+    }
   };
 
   useEffect(() => {
@@ -51,7 +62,7 @@ export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
           </ul>
 
           {offerId && offerAccepted ? (
-            <CustomButton onClick={handleRedirectToScoring}>
+            <CustomButton onClick={handleRedirectToNextStep}>
               Continue registration
             </CustomButton>
           ) : (

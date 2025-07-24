@@ -9,8 +9,9 @@ import {
   IS_OFFER_ACCEPTED,
   PRESCORING_OFFERS,
   SCORING,
+  STEP,
 } from '@/constants/localStorageKeys';
-import { resetOffers, setScoringSend } from '@/store/reducers/Loan';
+import { resetOffers, setScoringSend, setStep } from '@/store/reducers/Loan';
 
 export const PendingMessage = () => {
   const dispatch = useAppDispatch();
@@ -29,8 +30,10 @@ export const PendingMessage = () => {
             localStorage.removeItem(IS_OFFER_ACCEPTED);
             localStorage.removeItem(PRESCORING_OFFERS);
             localStorage.removeItem(SCORING);
+            localStorage.setItem(STEP, '1');
             dispatch(resetOffers());
             dispatch(setScoringSend(false));
+            dispatch(setStep(1));
           }
         } catch (error) {
           console.log(error);

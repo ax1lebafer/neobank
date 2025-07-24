@@ -8,4 +8,5 @@ export interface ILoanState {
   isScoringSend: boolean;
   applicationById: IApplicationDTO | null;
   isAgreeWithPaymentSchedule: boolean;
+  step: number;
 }
