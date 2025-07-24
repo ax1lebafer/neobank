@@ -8,6 +8,10 @@ import {
   sendScoringAsync,
 } from '@/store/actions/Loan';
 import { IPrescoringResponseDTO } from '@/types/loan';
+import {
+  IS_PAYMENT_SCHEDULE_ACCEPTED,
+  STEP,
+} from '@/constants/localStorageKeys';
 
 const initialState: ILoanState = {
   error: null,
@@ -15,8 +19,10 @@ const initialState: ILoanState = {
   offers: null,
   isScoringSend: false,
   applicationById: null,
-  isAgreeWithPaymentSchedule: false,
-  step: 1,
+  isAgreeWithPaymentSchedule: !!localStorage.getItem(
+    IS_PAYMENT_SCHEDULE_ACCEPTED
+  ),
+  step: Number(localStorage.getItem(STEP)),
 };
 
 const loanSlice = createSlice({
@@ -43,6 +49,9 @@ const loanSlice = createSlice({
       state.applicationById = null;
       state.isAgreeWithPaymentSchedule = false;
       state.step = 1;
+    },
+    setPaymentScheduleAccepted: (state, action: PayloadAction<boolean>) => {
+      state.isAgreeWithPaymentSchedule = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -128,6 +137,7 @@ export const {
   setScoringSend,
   setStep,
   resetLoanState,
+  setPaymentScheduleAccepted,
 } = loanSlice.actions;
 
 export default loanSlice.reducer;

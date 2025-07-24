@@ -9,9 +9,10 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { agreePaymentScheduleAsync } from '@/store/actions/Loan';
 import { Modal } from '@components/UI/Modal';
-import { resetLoanState } from '@/store/reducers/Loan';
+import { resetLoanState, setStep } from '@/store/reducers/Loan';
 import {
   IS_OFFER_ACCEPTED,
+  IS_PAYMENT_SCHEDULE_ACCEPTED,
   PRESCORING_OFFERS,
   SCORING,
   STEP,
@@ -44,10 +45,17 @@ export const PaymentScheduleForm = () => {
     navigate(ROUTES.home);
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!id) return;
 
-    dispatch(agreePaymentScheduleAsync(id));
+    try {
+      await dispatch(agreePaymentScheduleAsync(id)).unwrap();
+      dispatch(setStep(4));
+      localStorage.setItem(STEP, '4');
+      localStorage.setItem(IS_PAYMENT_SCHEDULE_ACCEPTED, 'true');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onReject = () => {
