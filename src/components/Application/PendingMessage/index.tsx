@@ -40,7 +40,7 @@ export const PendingMessage = () => {
         }
       }, 15000);
     }
-  }, [id, dispatch]);
+  }, [id, dispatch, navigate]);
 
   return (
     <section className={styles.pending}>
