@@ -9,3 +9,5 @@ export interface ITableColumns<T> {
   width?: number;
   align?: 'left' | 'center' | 'right';
 }
+
+export type TSortDirections = Record<string, 'asc' | 'desc'>;

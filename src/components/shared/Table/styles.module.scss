@@ -25,6 +25,12 @@
     font-weight: 500;
   }
 
+  &__headerCell {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
   thead th {
     position: sticky;
     top: 0;
