@@ -6,10 +6,12 @@ import {
   getApplicationById,
   postPrescoringAsync,
   sendScoringAsync,
+  signDocumentAsync,
 } from '@/store/actions/Loan';
 import { IPrescoringResponseDTO } from '@/types/loan';
 import {
   IS_PAYMENT_SCHEDULE_ACCEPTED,
+  IS_SIGN_DOCUMENT,
   STEP,
 } from '@/constants/localStorageKeys';
 
@@ -23,6 +25,7 @@ const initialState: ILoanState = {
     IS_PAYMENT_SCHEDULE_ACCEPTED
   ),
   step: Number(localStorage.getItem(STEP)),
+  isSignDocument: !!localStorage.getItem(IS_SIGN_DOCUMENT),
 };
 
 const loanSlice = createSlice({
@@ -49,9 +52,13 @@ const loanSlice = createSlice({
       state.applicationById = null;
       state.isAgreeWithPaymentSchedule = false;
       state.step = 1;
+      state.isSignDocument = false;
     },
     setPaymentScheduleAccepted: (state, action: PayloadAction<boolean>) => {
       state.isAgreeWithPaymentSchedule = action.payload;
+    },
+    setSignDocument: (state, action: PayloadAction<boolean>) => {
+      state.isSignDocument = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -127,6 +134,18 @@ const loanSlice = createSlice({
         state.loading = false;
         state.isAgreeWithPaymentSchedule = false;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
+      })
+      .addCase(signDocumentAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(signDocumentAsync.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(signDocumentAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? action.error.message ?? 'Unknown error';
       });
   },
 });
@@ -138,6 +157,7 @@ export const {
   setStep,
   resetLoanState,
   setPaymentScheduleAccepted,
+  setSignDocument,
 } = loanSlice.actions;
 
 export default loanSlice.reducer;

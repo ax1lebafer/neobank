@@ -108,3 +108,21 @@ export const agreePaymentScheduleAsync = createAsyncThunk<
     return thunkAPI.rejectWithValue('Unknown error');
   }
 });
+
+export const signDocumentAsync = createAsyncThunk<
+  void,
+  string,
+  { rejectValue: string }
+>('loan/signDocument', async (id, thunkAPI) => {
+  try {
+    const response = await apiClient.post(`document/${id}/sign`);
+
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});

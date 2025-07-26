@@ -9,4 +9,5 @@ export interface ILoanState {
   applicationById: IApplicationDTO | null;
   isAgreeWithPaymentSchedule: boolean;
   step: number;
+  isSignDocument: boolean;
 }
