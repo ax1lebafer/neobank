@@ -1,0 +1,21 @@
+@use "@/styles/variables" as *;
+
+.pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+  gap: 32px;
+
+  > h2 {
+    max-width: 550px;
+    text-align: center;
+  }
+
+  > p {
+    color: $grey;
+    max-width: 400px;
+    text-align: center;
+  }
+}
