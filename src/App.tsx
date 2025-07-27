@@ -9,6 +9,7 @@ import { ApplicationPage } from '@/pages/ApplicationPage';
 import { ApplicationDocumentPage } from '@/pages/ApplicationDocumentPage';
 import { RequireApplicationId } from '@components/RequireApplicationId';
 import { SignDocumentPage } from '@/pages/SignDocumentPage';
+import { VerifyCodePage } from '@/pages/VerifyCodePage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             element={<ApplicationDocumentPage />}
           />
           <Route path={ROUTES.signDocument} element={<SignDocumentPage />} />
+          <Route path={ROUTES.verifyCode} element={<VerifyCodePage />} />
         </Route>
 
         <Route path={ROUTES.notFound} element={<NotFoundPage />} />
