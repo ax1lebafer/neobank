@@ -7,4 +7,9 @@
   flex-direction: column;
   height: 50vh;
   gap: 32px;
+
+  &__error {
+    margin-top: -16px;
+    color: $red-400;
+  }
 }

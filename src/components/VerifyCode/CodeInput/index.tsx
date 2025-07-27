@@ -45,9 +45,8 @@ export const CodeInput: FC<ICodeInputProps> = ({ length = 4, onComplete }) => {
   return (
     <div className={styles.codeWrapper}>
       {values.map((value, idx) => (
-        <div className={styles.cellWrapper}>
+        <div className={styles.cellWrapper} key={idx}>
           <input
-            key={idx}
             type="text"
             maxLength={1}
             value={value}
