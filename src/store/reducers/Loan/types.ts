@@ -10,4 +10,5 @@ export interface ILoanState {
   isAgreeWithPaymentSchedule: boolean;
   step: number;
   isSignDocument: boolean;
+  isVerifyCode: boolean;
 }

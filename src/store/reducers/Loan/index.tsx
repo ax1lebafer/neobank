@@ -13,6 +13,7 @@ import { IPrescoringResponseDTO } from '@/types/loan';
 import {
   IS_PAYMENT_SCHEDULE_ACCEPTED,
   IS_SIGN_DOCUMENT,
+  IS_VERIFY_CODE,
   STEP,
 } from '@/constants/localStorageKeys';
 
@@ -27,6 +28,7 @@ const initialState: ILoanState = {
   ),
   step: Number(localStorage.getItem(STEP)),
   isSignDocument: !!localStorage.getItem(IS_SIGN_DOCUMENT),
+  isVerifyCode: !!localStorage.getItem(IS_VERIFY_CODE),
 };
 
 const loanSlice = createSlice({
@@ -151,14 +153,17 @@ const loanSlice = createSlice({
       .addCase(sendCodeAsync.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.isVerifyCode = false;
       })
       .addCase(sendCodeAsync.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
+        state.isVerifyCode = true;
       })
       .addCase(sendCodeAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
+        state.isVerifyCode = false;
       });
   },
 });

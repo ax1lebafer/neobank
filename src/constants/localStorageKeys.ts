@@ -6,3 +6,4 @@ export const SCORING = 'SCORING';
 export const STEP = 'STEP';
 export const IS_PAYMENT_SCHEDULE_ACCEPTED = 'IS_PAYMENT_SCHEDULE_ACCEPTED';
 export const IS_SIGN_DOCUMENT = 'IS_SIGN_DOCUMENT';
+export const IS_VERIFY_CODE = 'IS_VERIFY_CODE';

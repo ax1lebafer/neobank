@@ -1,16 +1,14 @@
 @use "@/styles/variables" as *;
 
-.verify {
+.congratulations {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 50vh;
   gap: 32px;
-  margin-top: 104px;
 
-  &__error {
-    margin-top: -16px;
-    color: $red-400;
+  > p {
+    color: $grey;
   }
 }

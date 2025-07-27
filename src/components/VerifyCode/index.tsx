@@ -5,35 +5,49 @@ import { useParams } from 'react-router-dom';
 import { ISendCodeArgs } from '@/store/actions/Loan/types';
 import { sendCodeAsync } from '@/store/actions/Loan';
 import { useCallback } from 'react';
+import { IS_VERIFY_CODE } from '@/constants/localStorageKeys';
+import { Congratulations } from '@components/VerifyCode/Congratulations';
 
 export const VerifyCode = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
-  const { error } = useAppSelector((state) => state.loan);
+  const { error, isVerifyCode } = useAppSelector((state) => state.loan);
 
   const handleComplete = useCallback(
-    (code: number) => {
+    async (code: number) => {
       if (!id) return;
 
-      const payload: ISendCodeArgs = {
-        id,
-        code,
-      };
+      try {
+        const payload: ISendCodeArgs = {
+          id,
+          code,
+        };
 
-      dispatch(sendCodeAsync(payload));
+        await dispatch(sendCodeAsync(payload)).unwrap();
+        localStorage.setItem(IS_VERIFY_CODE, 'true');
+      } catch (error) {
+        console.error(error);
+        localStorage.removeItem(IS_VERIFY_CODE);
+      }
     },
     [dispatch, id]
   );
 
   return (
     <section className={styles.verify}>
-      <h2>Please enter confirmation code</h2>
+      {isVerifyCode ? (
+        <Congratulations />
+      ) : (
+        <>
+          <h2>Please enter confirmation code</h2>
 
-      <CodeInput onComplete={handleComplete} />
+          <CodeInput onComplete={handleComplete} />
 
-      {!!error && (
-        <p className={styles.verify__error}>Invalid confirmation code</p>
+          {!!error && (
+            <p className={styles.verify__error}>Invalid confirmation code</p>
+          )}
+        </>
       )}
     </section>
   );
