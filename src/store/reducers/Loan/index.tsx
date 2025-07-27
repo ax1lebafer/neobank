@@ -5,6 +5,7 @@ import {
   applyOfferAsync,
   getApplicationById,
   postPrescoringAsync,
+  sendCodeAsync,
   sendScoringAsync,
   signDocumentAsync,
 } from '@/store/actions/Loan';
@@ -144,6 +145,18 @@ const loanSlice = createSlice({
         state.error = null;
       })
       .addCase(signDocumentAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload ?? action.error.message ?? 'Unknown error';
+      })
+      .addCase(sendCodeAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(sendCodeAsync.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(sendCodeAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload ?? action.error.message ?? 'Unknown error';
       });

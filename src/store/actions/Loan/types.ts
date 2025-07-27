@@ -14,3 +14,8 @@ export interface IScoringPayload {
     workExperienceCurrent: number;
   };
 }
+
+export interface ISendCodeArgs {
+  id: string;
+  code: number;
+}

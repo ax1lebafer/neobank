@@ -7,6 +7,7 @@ export const CodeInput: FC<ICodeInputProps> = ({ length = 4, onComplete }) => {
   const inputsRef = useRef<Array<HTMLInputElement | null>>(
     Array(length).fill(null)
   );
+  const submittedRef = useRef(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, idx: number) => {
     const digit = e.target.value.replace(/[^0-9]/g, '').charAt(0);
@@ -22,20 +23,30 @@ export const CodeInput: FC<ICodeInputProps> = ({ length = 4, onComplete }) => {
     e: React.KeyboardEvent<HTMLInputElement>,
     idx: number
   ) => {
-    if (e.key === 'Backspace' && !values[idx] && idx > 0) {
-      setValues((prev) => {
-        const next = [...prev];
+    if (e.key !== 'Backspace') return;
+
+    e.preventDefault();
+
+    setValues((prev) => {
+      const next = [...prev];
+
+      if (next[idx] !== '') {
+        next[idx] = '';
+      } else if (idx > 0) {
         next[idx - 1] = '';
-        return next;
-      });
-    }
+      }
+
+      return next;
+    });
   };
 
   useEffect(() => {
     const firstEmpty = values.findIndex((v) => v === '');
     if (firstEmpty !== -1) {
+      if (submittedRef.current) submittedRef.current = false;
       inputsRef.current[firstEmpty]?.focus();
-    } else {
+    } else if (!submittedRef.current) {
+      submittedRef.current = true;
       const codeStr = values.join('');
       const codeNum = parseInt(codeStr, 10);
       onComplete(codeNum);

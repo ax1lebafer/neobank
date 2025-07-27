@@ -3,7 +3,7 @@ import apiClient from '@/services/axiosInstance';
 import { IPrescoringFormValues } from '@components/Loan/FormStepsSection/PrescoringForm/types';
 import { IPrescoringResponseDTO } from '@/types/loan';
 import { IS_OFFER_ACCEPTED } from '@/constants/localStorageKeys';
-import { IScoringPayload } from '@/store/actions/Loan/types';
+import { IScoringPayload, ISendCodeArgs } from '@/store/actions/Loan/types';
 import { IApplicationDTO } from '@/types/application';
 
 export const postPrescoringAsync = createAsyncThunk<
@@ -116,6 +116,26 @@ export const signDocumentAsync = createAsyncThunk<
 >('loan/signDocument', async (id, thunkAPI) => {
   try {
     const response = await apiClient.post(`document/${id}/sign`);
+
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+
+    return thunkAPI.rejectWithValue('Unknown error');
+  }
+});
+
+export const sendCodeAsync = createAsyncThunk<
+  void,
+  ISendCodeArgs,
+  { rejectValue: string }
+>('loan/sendCode', async (args, thunkAPI) => {
+  const { id, code } = args;
+
+  try {
+    const response = await apiClient.post(`document/${id}/sign/code`, code);
 
     return response.data;
   } catch (error: unknown) {

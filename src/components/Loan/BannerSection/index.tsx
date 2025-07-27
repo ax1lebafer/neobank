@@ -31,6 +31,9 @@ export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
       case '4':
         navigate(`/loan/${offerId}/document/sign`);
         break;
+      case '5':
+        navigate(`/loan/${offerId}/code`);
+        break;
       default:
         return;
     }
