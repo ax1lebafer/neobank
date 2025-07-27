@@ -56,6 +56,7 @@ const loanSlice = createSlice({
       state.isAgreeWithPaymentSchedule = false;
       state.step = 1;
       state.isSignDocument = false;
+      state.isVerifyCode = false;
     },
     setPaymentScheduleAccepted: (state, action: PayloadAction<boolean>) => {
       state.isAgreeWithPaymentSchedule = action.payload;
