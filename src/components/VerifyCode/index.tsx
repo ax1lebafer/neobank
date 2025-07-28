@@ -7,12 +7,15 @@ import { sendCodeAsync } from '@/store/actions/Loan';
 import { useCallback } from 'react';
 import { IS_VERIFY_CODE } from '@/constants/localStorageKeys';
 import { Congratulations } from '@components/VerifyCode/Congratulations';
+import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 
 export const VerifyCode = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
-  const { error, isVerifyCode } = useAppSelector((state) => state.loan);
+  const { error, isVerifyCode, loading } = useAppSelector(
+    (state) => state.loan
+  );
 
   const handleComplete = useCallback(
     async (code: number) => {
@@ -28,7 +31,6 @@ export const VerifyCode = () => {
         localStorage.setItem(IS_VERIFY_CODE, 'true');
       } catch (error) {
         console.error(error);
-        localStorage.removeItem(IS_VERIFY_CODE);
       }
     },
     [dispatch, id]
@@ -40,9 +42,16 @@ export const VerifyCode = () => {
         <Congratulations />
       ) : (
         <>
-          <h2>Please enter confirmation code</h2>
+          <SkeletonBlock loading={loading} skeletonProps={{ width: 400 }}>
+            <h2>Please enter confirmation code</h2>
+          </SkeletonBlock>
 
-          <CodeInput onComplete={handleComplete} />
+          <SkeletonBlock
+            loading={loading}
+            skeletonProps={{ width: 300, height: 50 }}
+          >
+            <CodeInput onComplete={handleComplete} />
+          </SkeletonBlock>
 
           {!!error && (
             <p className={styles.verify__error}>Invalid confirmation code</p>
