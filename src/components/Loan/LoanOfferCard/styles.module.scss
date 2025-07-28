@@ -12,6 +12,22 @@
   max-width: 300px;
   width: 100%;
 
+  @media (max-width: $desktop) {
+    flex-direction: row;
+    max-width: none;
+    justify-content: space-between;
+  }
+
+  @media (max-width: $phone) {
+    flex-direction: column;
+  }
+
+  > img {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
   &__list {
     list-style: none;
     display: flex;
@@ -34,5 +50,10 @@
     border-radius: 8px;
     max-width: 150px;
     width: 100%;
+
+    @media (max-width: $tablet) {
+      margin-top: 0;
+      max-width: 120px;
+    }
   }
 }
