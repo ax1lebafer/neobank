@@ -1,0 +1,48 @@
+@use "@/styles/variables" as *;
+
+.notification {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  max-width: 320px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  transform: translateX(100%);
+  opacity: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+
+  > img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}
+
+.error {
+  border: 1px solid red;
+  background-color: $red-100;
+}
+
+.success {
+  border: 1px solid green;
+}
+
+.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
