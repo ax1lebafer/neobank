@@ -10,5 +10,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
   }
 }
