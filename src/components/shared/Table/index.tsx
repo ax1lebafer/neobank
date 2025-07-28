@@ -55,7 +55,7 @@ export const Table = <T,>({ columns, items }: ITableProps<T>) => {
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
-        <thead className={styles.table__head}>
+        <thead>
           <tr className={styles.table__row}>
             {columns.map((col) => {
               const key = String(col.id);

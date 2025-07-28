@@ -12,6 +12,11 @@
     max-width: 40%;
     justify-content: space-between;
     margin-bottom: 75px;
+
+    @media (max-width: $tablet) {
+      max-width: none;
+      margin-bottom: 35px;
+    }
   }
 
   &__step {

@@ -18,6 +18,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 70px;
+
+  @media (max-width: $tablet) {
+    margin: 0 30px;
+  }
+
+  @media (max-width: $phone) {
+    margin: 0 15px;
+  }
 
   &__close {
     position: absolute;
@@ -42,6 +51,10 @@
     display: flex;
     align-items: center;
     gap: 40px;
+
+    @media (max-width: $phone) {
+      gap: 20px;
+    }
   }
 
   &__button {
