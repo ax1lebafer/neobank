@@ -48,7 +48,7 @@ export const ScoringForm = () => {
     };
 
     try {
-      await dispatch(sendScoringAsync(payload));
+      await dispatch(sendScoringAsync(payload)).unwrap();
 
       localStorage.setItem(SCORING, 'true');
       localStorage.setItem(STEP, '3');
