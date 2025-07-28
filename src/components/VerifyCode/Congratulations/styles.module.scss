@@ -8,7 +8,12 @@
   height: 50vh;
   gap: 32px;
 
+  > h2 {
+    text-align: center;
+  }
+
   > p {
     color: $grey;
+    text-align: center;
   }
 }
