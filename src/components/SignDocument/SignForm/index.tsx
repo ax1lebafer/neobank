@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { SkeletonBlock } from '@components/UI/SkeletonBlock';
 import { signDocumentAsync } from '@/store/actions/Loan';
 import { useParams } from 'react-router-dom';
-import { IS_SIGN_DOCUMENT } from '@/constants/localStorageKeys';
+import { IS_SIGN_DOCUMENT, STEP } from '@/constants/localStorageKeys';
 import { setSignDocument, setStep } from '@/store/reducers/Loan';
 
 export const SignForm = () => {
@@ -25,6 +25,7 @@ export const SignForm = () => {
       await dispatch(signDocumentAsync(id)).unwrap();
 
       localStorage.setItem(IS_SIGN_DOCUMENT, 'true');
+      localStorage.setItem(STEP, '5');
       dispatch(setStep(5));
       dispatch(setSignDocument(true));
     } catch (error) {
