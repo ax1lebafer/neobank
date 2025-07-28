@@ -9,6 +9,10 @@
   gap: 32px;
   margin-top: 104px;
 
+  > h2 {
+    text-align: center;
+  }
+
   &__error {
     margin-top: -16px;
     color: $red-400;
