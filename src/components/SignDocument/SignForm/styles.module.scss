@@ -10,6 +10,11 @@
     align-items: center;
     max-width: 40%;
     justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: $tablet) {
+      max-width: none;
+    }
 
     > p {
       font-weight: 500;
@@ -28,6 +33,10 @@
     justify-content: flex-end;
     width: 100%;
     margin-top: -16px;
+
+    @media (max-width: $phone) {
+      gap: 20px;
+    }
   }
 
   &__button {

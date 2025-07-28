@@ -5,7 +5,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 export const ApplicationDocumentPage = () => {
   const { step } = useAppSelector((state) => state.loan);
 
-  if (step !== 3) {
+  if (![3, 4].includes(step)) {
     return <NotFoundPage />;
   }
 
