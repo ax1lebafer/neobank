@@ -1,0 +1,32 @@
+@use "@/styles/variables" as *;
+
+.scoring {
+  background-color: $white;
+  border-radius: 28px;
+  box-shadow: 0 2px 4px 0 #00000033;
+  padding: 32px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+
+  &__titleWrapper {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    justify-content: space-between;
+    margin-bottom: 41px;
+    gap: 20px;
+
+    @media (max-width: $tablet) {
+      max-width: none;
+    }
+  }
+
+  &__button {
+    align-self: flex-end;
+    margin-top: 24px;
+    border-radius: 8px;
+    max-width: 150px;
+    width: 100%;
+  }
+}

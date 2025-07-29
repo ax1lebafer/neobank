@@ -1,0 +1,40 @@
+@use "@/styles/variables" as *;
+@use "@/styles/scrollbar" as *;
+
+.tableWrapper {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 10px;
+  @include scrollbar();
+  overflow-x: scroll;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+
+  &__row {
+    height: 40px;
+    border-bottom: 1px solid $grey-100;
+  }
+
+  &__cell {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__headerCell {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $white;
+    color: #4a5568;
+  }
+}

@@ -1,0 +1,79 @@
+@use "@/styles/variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 28px;
+  background-color: $white;
+  box-shadow: 0 0 8px 0 #00000033;
+
+  @media (max-width: $desktop) {
+    padding: 20px;
+  }
+
+  &__top {
+    margin-bottom: 32px;
+    display: flex;
+    gap: 40px;
+
+    @media (max-width: $tablet) {
+      gap: 25px;
+    }
+
+    @media (max-width: $phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__sliderBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1;
+
+    @media (max-width: $tablet) {
+      flex: 1.5;
+    }
+  }
+
+  &__titleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__divider {
+    width: 1px;
+    border: 0.5px dashed rgba($grey-light, 0.4);
+
+    @media (max-width: $phone) {
+      display: none;
+    }
+  }
+
+  &__inputBlock {
+    flex: 1;
+
+    @media (max-width: $tablet) {
+      flex: 0.5;
+    }
+  }
+
+  &__input {
+    max-width: 250px;
+    margin-top: 10px;
+    font-size: 16px;
+
+    @media (max-width: $phone) {
+      max-width: 100%;
+    }
+  }
+
+  &__button {
+    align-self: flex-end;
+    border-radius: 8px;
+    max-width: 150px;
+    width: 100%;
+  }
+}

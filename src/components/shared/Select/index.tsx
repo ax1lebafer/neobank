@@ -34,6 +34,7 @@ export const Select: FC<ISelectProps> = ({
           inputProps?.className
         )}
       >
+        <option value="" disabled hidden></option>
         {options && options.length > 0 ? (
           options.map((option, index) => (
             <option key={index} value={option.value}>

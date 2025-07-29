@@ -8,6 +8,16 @@ export interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   inputProps?: {
     className?: string;
     endAdornment?: ReactNode;
+    maxLength?: number;
+    inputMode?:
+      | 'email'
+      | 'search'
+      | 'tel'
+      | 'text'
+      | 'url'
+      | 'numeric'
+      | 'none'
+      | 'decimal';
   };
   variant?: 'outlined' | 'underline';
   isValid?: boolean;

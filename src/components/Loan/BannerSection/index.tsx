@@ -3,10 +3,50 @@ import CardImage from '@/assets/images/card_1.png';
 import { CustomButton } from '@components/UI/CustomButton';
 import { CARD_CONDITIONS } from '@components/Loan/BannerSection/constants';
 import { Tooltip } from '@components/shared/Tooltip';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { IBannerSectionProps } from '@components/Loan/BannerSection/types';
+import { useAppSelector } from '@/store/store';
+import { useNavigate } from 'react-router-dom';
+import { IS_OFFER_ACCEPTED, STEP } from '@/constants/localStorageKeys';
 
 export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
+  const navigate = useNavigate();
+
+  const { offers } = useAppSelector((state) => state.loan);
+
+  const [offerAccepted, setOfferAccepted] = useState(false);
+
+  const offerId = offers?.[0].applicationId;
+
+  const handleRedirectToNextStep = () => {
+    const stepStored = localStorage.getItem(STEP);
+
+    switch (stepStored) {
+      case '2':
+        navigate(`/loan/${offerId}`);
+        break;
+      case '3':
+        navigate(`/loan/${offerId}/document`);
+        break;
+      case '4':
+        navigate(`/loan/${offerId}/document/sign`);
+        break;
+      case '5':
+        navigate(`/loan/${offerId}/code`);
+        break;
+      default:
+        return;
+    }
+  };
+
+  useEffect(() => {
+    const isOfferAccepted = localStorage.getItem(IS_OFFER_ACCEPTED);
+
+    if (isOfferAccepted) {
+      setOfferAccepted(true);
+    }
+  }, []);
+
   return (
     <section className={styles.banner}>
       <article className={styles.banner__card}>
@@ -27,7 +67,13 @@ export const BannerSection: FC<IBannerSectionProps> = ({ onApplyCard }) => {
             ))}
           </ul>
 
-          <CustomButton onClick={onApplyCard}>Apply for card</CustomButton>
+          {offerId && offerAccepted ? (
+            <CustomButton onClick={handleRedirectToNextStep}>
+              Continue registration
+            </CustomButton>
+          ) : (
+            <CustomButton onClick={onApplyCard}>Apply for card</CustomButton>
+          )}
         </div>
 
         <img

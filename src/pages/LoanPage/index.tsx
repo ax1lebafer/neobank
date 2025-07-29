@@ -1,8 +1,8 @@
 import { BannerSection } from '@components/Loan/BannerSection';
 import { CardHighlights } from '@components/Loan/CardHighlights';
 import { StepsToGet } from '@components/Loan/StepsToGet';
-import { PrescoringForm } from '@components/Loan/PrescoringForm';
 import { useRef } from 'react';
+import { FormStepsSection } from '@components/Loan/FormStepsSection';
 
 export const LoanPage = () => {
   const prescoringRef = useRef<HTMLDivElement | null>(null);
@@ -19,9 +19,7 @@ export const LoanPage = () => {
       <BannerSection onApplyCard={scrollToForm} />
       <CardHighlights />
       <StepsToGet />
-      <section ref={prescoringRef}>
-        <PrescoringForm />
-      </section>
+      <FormStepsSection ref={prescoringRef} />
     </>
   );
 };

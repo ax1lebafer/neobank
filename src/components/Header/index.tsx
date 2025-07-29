@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ROUTES } from '@/routes';
 import { HEADER_LINKS } from '@components/Header/constants';
 import { CustomButton } from '@components/UI/CustomButton';
@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 export const Header = () => {
+  const { pathname } = useLocation();
+
   const headerRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,15 +38,22 @@ export const Header = () => {
       <nav
         className={cn(styles.header__nav, isOpen ? styles.header__navOpen : '')}
       >
-        {HEADER_LINKS.map((link) => (
-          <Link
-            className={styles.header__link}
-            key={link.label}
-            to={link.route}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {HEADER_LINKS.map((link) => {
+          const isActiveLink = pathname === link.route;
+
+          return (
+            <Link
+              className={cn(
+                styles.header__link,
+                isActiveLink && styles.header__linkActive
+              )}
+              key={link.label}
+              to={link.route}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className={styles.header__buttonbox}>

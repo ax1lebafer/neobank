@@ -1,0 +1,59 @@
+@use "@/styles/variables" as *;
+
+.offer {
+  background-color: $white;
+  border-radius: 28px;
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  box-shadow: 0 2px 4px 0 #00000033;
+  max-width: 300px;
+  width: 100%;
+
+  @media (max-width: $desktop) {
+    flex-direction: row;
+    max-width: none;
+    justify-content: space-between;
+  }
+
+  @media (max-width: $phone) {
+    flex-direction: column;
+  }
+
+  > img {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  &__button {
+    margin-top: 58px;
+    border-radius: 8px;
+    max-width: 150px;
+    width: 100%;
+
+    @media (max-width: $tablet) {
+      margin-top: 0;
+      max-width: 120px;
+    }
+  }
+}

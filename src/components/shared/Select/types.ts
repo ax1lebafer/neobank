@@ -9,6 +9,7 @@ export interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
   };
   options?: { label: string; value: number | string }[];
+  placeholder?: string;
 }
 
 export interface ISelectOption {
