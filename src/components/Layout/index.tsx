@@ -2,7 +2,7 @@ import { Header } from '@components/Header';
 import { Outlet } from 'react-router-dom';
 import { Footer } from '@components/Footer';
 import styles from './styles.module.scss';
-import { Notification } from '@components/Notification';
+import { Notification } from '@components/shared/Notification';
 
 export const Layout = () => {
   return (
