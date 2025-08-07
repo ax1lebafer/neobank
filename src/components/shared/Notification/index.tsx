@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import CloseIcon from '@/assets/icons/close.svg';
+import CloseIcon from '@assets/icons/close.svg';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import cn from 'classnames';
 import { clearNotification } from '@/store/reducers/Notification';
